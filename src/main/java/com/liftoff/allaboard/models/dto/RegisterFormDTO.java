@@ -1,38 +1,41 @@
 package com.liftoff.allaboard.models.dto;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
-public class RegisterFormDTO {
+public class RegisterFormDTO extends LoginFormDTO{
 
-        @NotNull
-        @NotBlank
-        @Size(min = 3, max = 20, message = "Invalid username. Must be between 3 and 20 characters.")
-        private String username;
+    private String verifyPassword;
 
-        @NotNull
-        @NotBlank
-        @Size(min = 5, max = 30, message = "Invalid password. Must be between 5 and 30 characters.")
-        private String password;
+    @NotNull
+    @NotBlank
+    @Email(message = "Please enter a valid email")
+    private String email;
 
-        public String getUsername() {
-            return username;
-        }
+    @NotNull
+    @NotBlank(message = "This field can not be left blank!")
+    @Size(min = 5, max = 50, message = "Please enter an address between 5 and 50 characters.")
+    private String addressLineOne;
 
-        public void setUsername(String username) {
-            this.username = username;
-        }
+    @NotNull
+    @NotBlank(message = "This field can not be left blank!")
+    @Size(min = 1, max = 20, message = "Address too long.  Please enter a shorter address.")
+    private String addressLineTwo;
 
-        public String getPassword() {
-            return password;
-        }
+    @NotNull
+    @NotBlank(message = "This field can not be left blank!")
+    @Size(min = 3, max = 100, message = "Invalid city. Must be between 3 and 100 characters.")
+    private String city;
 
-        public void setPassword(String password) {
-            this.password = password;
-        }
+    @NotNull
+    @NotBlank(message = "This field can not be left blank!")
+    @Size(min = 2, max = 2, message = "Please enter 2 letter state abbreviation.")
+    private String state;
 
-        private String verifyPassword;
+    @NotNull
+    @Positive(message = "This field can not be a negative number")
+    @Size(min = 5, max = 5, message = "Please enter a 5 digit zip code.")
+    private String zipCode;
+
 
         public String getVerifyPassword() {
             return verifyPassword;
@@ -42,4 +45,51 @@ public class RegisterFormDTO {
             this.verifyPassword = verifyPassword;
         }
 
+    public String getEmail() {
+        return email;
     }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAddressLineOne() {
+        return addressLineOne;
+    }
+
+    public void setAddressLineOne(String addressLineOne) {
+        this.addressLineOne = addressLineOne;
+    }
+
+    public String getAddressLineTwo() {
+        return addressLineTwo;
+    }
+
+    public void setAddressLineTwo(String addressLineTwo) {
+        this.addressLineTwo = addressLineTwo;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+}
