@@ -55,6 +55,7 @@ public class Message {
 
     public void setToGameGroupId(int toGameGroupId) {
         this.toGameGroupId = toGameGroupId;
+        System.out.println("test we are here");
     }
 }
 
