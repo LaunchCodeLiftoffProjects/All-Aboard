@@ -3,6 +3,7 @@ package com.liftoff;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 
@@ -12,7 +13,9 @@ public class Message {
     @GeneratedValue
     private int id;
 
+    @NotNull
     private String messageText;
+
     private LocalDate timeSent;
     private int fromUserId;
     private int toGameGroupId;
@@ -55,7 +58,6 @@ public class Message {
 
     public void setToGameGroupId(int toGameGroupId) {
         this.toGameGroupId = toGameGroupId;
-        System.out.println("test we are here");
     }
 }
 
