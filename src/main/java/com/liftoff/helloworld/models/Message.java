@@ -1,4 +1,4 @@
-package com.liftoff;
+package com.liftoff.helloworld.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,11 +20,20 @@ public class Message {
     private int fromUserId;
     private int toGameGroupId;
 
+
+    public Message() {
+
+    }
+
     public Message(String messageText, int fromUserId, int toGameGroupId) {
         this.timeSent = LocalDate.now();
         setMessageText(messageText);
         setFromUserId(fromUserId);
         setToGameGroupId(toGameGroupId);
+    }
+
+    public int getId() {
+        return id;
     }
 
 
