@@ -1,0 +1,54 @@
+  html, body {
+        margin: 0;
+        height: 100%;
+      }
+
+      .control {
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .control-label {
+        margin-bottom: 7px;
+      }
+
+      .mapGrid {
+        height: 100%;
+        display: grid;
+        grid-gap: 2px;
+        grid-template-rows: auto 2fr 1fr;
+        grid-template-columns: auto 1fr;
+      }
+
+      .controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 1;
+        grid-column-end: 3;
+        background-color: #f7faf1;
+        padding: 18px;
+      }
+
+      .results {
+        grid-row-start: 2;
+        grid-row-end: 4;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        background-color: #efeff9;
+        width: 350px;
+        font-size: 25px;
+        text-align: center;
+      }
+
+      .map {
+        grid-row-start: 2;
+        grid-row-end: 4;
+        grid-column-start: 2;
+        grid-column-end: 3;
+      }
