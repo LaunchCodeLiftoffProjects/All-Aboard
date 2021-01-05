@@ -1,4 +1,5 @@
-package org.launchcode.javawebdevtechjobsauthentication.models;
+package com.liftoff.allaboard.models;
+
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
