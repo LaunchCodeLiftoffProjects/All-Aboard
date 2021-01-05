@@ -21,7 +21,6 @@ public class User {
     @Size(max = 150)
     private String name;
 
-
     @NotNull
     private String username;
 
