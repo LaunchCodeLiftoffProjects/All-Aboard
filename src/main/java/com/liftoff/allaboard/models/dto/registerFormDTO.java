@@ -2,7 +2,7 @@ package com.liftoff.allaboard.models.dto;
 
 import javax.validation.constraints.*;
 
-public class RegisterFormDTO extends LoginFormDTO{
+public class registerFormDTO extends loginFormDTO {
 
     private String verifyPassword;
 
