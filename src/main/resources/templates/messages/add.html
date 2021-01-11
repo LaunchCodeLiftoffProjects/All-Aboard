@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<!--<head th:replace="fragments :: head"></head>-->
+<body class="container  body-content">
+<h1>Add Message</h1>
+
+<!--<nav th:replace="fragments :: page-header"></nav>-->
+
+<form method="post" style="max-width:600px;" ac>
+    <div class="form-group">
+        <label th:for="messageText">Text</label>
+        <input class="form-control" th:field="${message.messageText}" />
+<!--        <span th:errors="${employer.name}" class="error"></span>-->
+    </div>
+
+<!--    <div class="form-group">-->
+<!--        <label th:for="location">Employer Location</label>-->
+<!--        <input class="form-control" th:field="${employer.location}" />-->
+<!--        <span th:errors="${employer.location}" class="error"></span>-->
+<!--    </div>-->
+
+    <input type="submit" value="Add Message" />
+</form>
+
+</body>
+</html>

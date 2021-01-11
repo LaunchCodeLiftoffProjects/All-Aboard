@@ -4,16 +4,50 @@ import com.liftoff.helloworld.models.Message;
 import com.liftoff.helloworld.models.data.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 @Controller
-@RequestMapping("messages")
+@RequestMapping("messaging")
 public class MessageController {
 
     @Autowired
     private MessageRepository messageRepository;
+
+
+    @GetMapping("add")
+    public String addMessage(Model model) {
+        model.addAttribute(new Message());
+        return "messages/add";
+    }
+
+    @PostMapping("add")
+    public String processAddMessageForm(@ModelAttribute @Valid Message message,
+                                        Errors errors, HttpServletRequest request, Model model) {
+
+//        if (errors.hasErrors()) {
+//            return "employers/add";
+//        }
+
+        Integer userId = (Integer) request.getSession()
+                .getAttribute("user");
+        if(userId == null){
+            userId = 1;
+        }
+        message.setFromUserId(userId);
+        message.setToGameGroupId(2);
+
+        this.messageRepository.save(message);
+
+        return "redirect:/add";
+
+    }
+
+
 
 
     @GetMapping("wtf")
