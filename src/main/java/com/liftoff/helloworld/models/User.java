@@ -1,6 +1,8 @@
 package com.liftoff.helloworld.models;
 
 
-@Entit
+import javax.persistence.Entity;
+
+@Entity
 public class User {
 }
