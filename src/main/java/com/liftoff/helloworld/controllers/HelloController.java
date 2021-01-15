@@ -26,4 +26,9 @@ public class HelloController {
         return Integer.toString(id);
     }
 
+    @GetMapping(value = "map")
+    public String map() {
+        return "map";
+    }
+
 }

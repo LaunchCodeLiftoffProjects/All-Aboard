@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 //@ComponentScan("com.liftoff.helloworld.controllers")
 public class HelloWorldApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(HelloWorldApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(HelloWorldApplication.class, args);
+    }
 
 
 }
