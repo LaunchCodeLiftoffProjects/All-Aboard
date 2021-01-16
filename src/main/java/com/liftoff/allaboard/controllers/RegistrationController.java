@@ -1,7 +1,7 @@
 package com.liftoff.allaboard.controllers;
 
-import com.liftoff.allaboard.models.User;
 import com.liftoff.allaboard.data.UserRepository;
+import com.liftoff.allaboard.models.User;
 import com.liftoff.allaboard.models.dto.RegisterFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

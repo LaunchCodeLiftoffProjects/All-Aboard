@@ -37,7 +37,7 @@ public class RegisterFormDTO extends LoginFormDTO {
     private String zipCode;
 
 
-        public String getVerifyPassword() {
+    public String getVerifyPassword() {
             return verifyPassword;
         }
 

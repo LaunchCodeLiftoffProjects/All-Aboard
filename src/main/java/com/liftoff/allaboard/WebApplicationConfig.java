@@ -1,4 +1,4 @@
-package com.liftoff;
+package com.liftoff.allaboard;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
