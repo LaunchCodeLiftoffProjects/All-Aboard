@@ -1,8 +1,8 @@
-package com.liftoff;
+package com.liftoff.allaboard;
 
+import com.liftoff.allaboard.data.UserRepository;
 import com.liftoff.allaboard.models.User;
 import com.liftoff.allaboard.controllers.AuthenticationController;
-import com.liftoff.allaboard.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 

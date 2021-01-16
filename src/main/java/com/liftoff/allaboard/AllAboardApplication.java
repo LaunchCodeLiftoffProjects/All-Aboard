@@ -1,8 +1,7 @@
-package com.liftoff.allabaord;
+package com.liftoff.allaboard;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.GetMapping;
 
 @SpringBootApplication
 public class AllAboardApplication {
