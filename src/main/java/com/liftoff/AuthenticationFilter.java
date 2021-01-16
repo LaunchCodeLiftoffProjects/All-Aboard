@@ -1,7 +1,8 @@
 package com.liftoff;
 
 import com.liftoff.allaboard.models.User;
-import com.liftoff.allaboard.models.controllers.AuthenticationController;
+import com.liftoff.allaboard.controllers.AuthenticationController;
+import com.liftoff.allaboard.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -15,7 +16,7 @@ import java.util.List;
 public class AuthenticationFilter implements HandlerInterceptor {
 
     @Autowired
-    com.liftoff.allaboard.models.data.userRepository userRepository;
+    UserRepository userRepository;
 
     @Autowired
     AuthenticationController authenticationController;

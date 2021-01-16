@@ -1,7 +1,8 @@
-package com.liftoff.controllers;
+package com.liftoff.allaboard.controllers;
 
 import com.liftoff.allaboard.models.User;
-import com.liftoff.allaboard.models.dto.registerFormDTO;
+import com.liftoff.allaboard.data.UserRepository;
+import com.liftoff.allaboard.models.dto.RegisterFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +20,7 @@ import java.util.Optional;
 public class RegistrationController {
 
     @Autowired
-    com.liftoff.allaboard.models.data.userRepository userRepository;
+    UserRepository userRepository;
 
     private static final String userSessionKey = "user";
 
@@ -44,13 +45,13 @@ public class RegistrationController {
 
     @GetMapping("/register")
     public String displayRegistrationForm(Model model) {
-        model.addAttribute(new registerFormDTO());
+        model.addAttribute(new RegisterFormDTO());
         model.addAttribute("title", "Register");
         return "register";
     }
 
     @PostMapping("/register")
-    public String processRegistrationForm(@ModelAttribute @Valid registerFormDTO registerFormDTO,
+    public String processRegistrationForm(@ModelAttribute @Valid RegisterFormDTO registerFormDTO,
                                           Errors errors, HttpServletRequest request,
                                           Model model) {
 

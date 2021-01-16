@@ -1,11 +1,12 @@
-package com.liftoff.allaboard.models.controllers;
+package com.liftoff.allaboard.controllers;
 
 
 
 
 import com.liftoff.allaboard.models.User;
-import com.liftoff.allaboard.models.dto.loginFormDTO;
-import com.liftoff.allaboard.models.dto.registerFormDTO;
+import com.liftoff.allaboard.data.UserRepository;
+import com.liftoff.allaboard.models.dto.LoginFormDTO;
+import com.liftoff.allaboard.models.dto.RegisterFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +24,7 @@ import java.util.Optional;
 public class AuthenticationController {
 
     @Autowired
-    com.liftoff.allaboard.models.data.userRepository userRepository;
+    UserRepository userRepository;
 
     private static final String userSessionKey = "user";
 
@@ -46,15 +47,15 @@ public class AuthenticationController {
         session.setAttribute(userSessionKey, user.getId());
     }
 
-    @GetMapping("/register")
+    @GetMapping("register")
     public String displayRegistrationForm(Model model) {
-        model.addAttribute(new registerFormDTO());
+        model.addAttribute(new RegisterFormDTO());
         model.addAttribute("title", "Register");
         return "register";
     }
 
-    @PostMapping("/register")
-    public String processRegistrationForm(@ModelAttribute @Valid registerFormDTO registerFormDTO,
+    @PostMapping("register")
+    public String processRegistrationForm(@ModelAttribute @Valid RegisterFormDTO registerFormDTO,
                                           Errors errors, HttpServletRequest request,
                                           Model model) {
 
@@ -86,48 +87,41 @@ public class AuthenticationController {
         return "redirect:";
     }
 
-    @GetMapping("/login")
+    @GetMapping({"/login"})
     public String displayLoginForm(Model model) {
-        model.addAttribute(new loginFormDTO());
+        model.addAttribute(new LoginFormDTO());
         model.addAttribute("title", "Log In");
         return "login";
     }
 
-    @PostMapping("/login")
-    public String processLoginForm(@ModelAttribute @Valid loginFormDTO loginFormDTO,
-                                   Errors errors, HttpServletRequest request,
-                                   Model model) {
-
+    @PostMapping({"/login"})
+    public String processLoginForm(@ModelAttribute @Valid LoginFormDTO loginFormDTO, Errors errors, HttpServletRequest request, Model model) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Log In");
             return "login";
+        } else {
+            User theUser = this.userRepository.findByUsername(loginFormDTO.getUsername());
+            if (theUser == null) {
+                errors.rejectValue("username", "user.invalid", "The given username does not exist");
+                model.addAttribute("title", "Log In");
+                return "login";
+            } else {
+                String password = loginFormDTO.getPassword();
+                if (!theUser.isMatchingPassword(password)) {
+                    errors.rejectValue("password", "password.invalid", "Invalid password");
+                    model.addAttribute("title", "Log In");
+                    return "login";
+                } else {
+                    setUserInSession(request.getSession(), theUser);
+                    return "redirect:";
+                }
+            }
         }
-
-        User theUser = userRepository.findByUsername(loginFormDTO.getUsername());
-
-        if (theUser == null) {
-            errors.rejectValue("username", "user.invalid", "The given username does not exist");
-            model.addAttribute("title", "Log In");
-            return "login";
-        }
-
-        String password = loginFormDTO.getPassword();
-
-        if (!theUser.isMatchingPassword(password)) {
-            errors.rejectValue("password", "password.invalid", "Invalid password");
-            model.addAttribute("title", "Log In");
-            return "login";
-        }
-
-        setUserInSession(request.getSession(), theUser);
-
-        return "redirect:";
     }
 
-    @GetMapping("/logout")
-    public String logout(HttpServletRequest request){
+    @GetMapping({"/logout"})
+    public String logout(HttpServletRequest request) {
         request.getSession().invalidate();
         return "redirect:/login";
     }
-
 }
