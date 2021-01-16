@@ -1,7 +1,7 @@
 package com.liftoff.allaboard.models;
 
-import com.liftoff.allaboard.models.data.UserRepository;
-import com.liftoff.controllers.RegistrationController;
+import com.liftoff.allaboard.data.UserRepository;
+import com.liftoff.allaboard.controllers.RegistrationController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 
