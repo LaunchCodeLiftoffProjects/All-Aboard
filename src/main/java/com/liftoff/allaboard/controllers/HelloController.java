@@ -1,4 +1,4 @@
-package com.liftoff.helloworld.controllers;
+package com.liftoff.allaboard.controllers;
 
 import com.liftoff.helloworld.models.Message;
 import com.liftoff.helloworld.models.data.MessageRepository;
