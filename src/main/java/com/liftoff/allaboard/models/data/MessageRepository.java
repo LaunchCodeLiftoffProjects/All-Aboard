@@ -1,6 +1,7 @@
-package com.liftoff.helloworld.models.data;
+package com.liftoff.allaboard.models.data;
 
-import com.liftoff.helloworld.models.Message;
+
+import com.liftoff.allaboard.models.Message;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

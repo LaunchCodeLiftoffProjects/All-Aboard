@@ -1,7 +1,7 @@
 package com.liftoff.allaboard.controllers;
 
-import com.liftoff.helloworld.models.Message;
-import com.liftoff.helloworld.models.data.MessageRepository;
+import com.liftoff.allaboard.models.Message;
+import com.liftoff.allaboard.models.data.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

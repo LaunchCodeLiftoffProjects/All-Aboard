@@ -1,4 +1,4 @@
-package com.liftoff.helloworld.models;
+package com.liftoff.allaboard.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
