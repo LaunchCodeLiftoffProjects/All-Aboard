@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @Entity
-public class User {
+public class User extends AbstractEntity {
 
     @Id
     @GeneratedValue
@@ -126,6 +126,9 @@ public class User {
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
+
+
+
 
     @Override
     public String toString() {

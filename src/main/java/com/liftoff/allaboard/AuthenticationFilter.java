@@ -21,7 +21,7 @@ public class AuthenticationFilter implements HandlerInterceptor {
     @Autowired
     AuthenticationController authenticationController;
 
-    private static final List<String> whitelist = Arrays.asList("/login", "/register", "/logout", "/css");
+    private static final List<String> whitelist = Arrays.asList("/login", "/register", "/logout", "/css", "/map");
 
     private static boolean isWhitelisted(String path) {
         for (String pathRoot : whitelist) {
@@ -55,6 +55,10 @@ public class AuthenticationFilter implements HandlerInterceptor {
         // The user is NOT logged in
         response.sendRedirect("/login");
         return false;
+    }
+
+    public String encode(String password) {
+        return "true";
     }
 
 }
