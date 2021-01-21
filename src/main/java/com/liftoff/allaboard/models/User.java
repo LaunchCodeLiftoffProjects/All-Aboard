@@ -50,12 +50,12 @@ public class User {
 
     @NotBlank(message = "This field cannot be left blank!")
     @Size(max = 5)
-    private String zipCode;
+    private Integer zipCode;
 
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-    public User() {}
+    public User(String username, String password, String email, String addressLineOne, String addressLineTwo, String city, String state, Integer zipCode) {}
 
     public User(String username, String password) {
         this.username = username;
@@ -119,11 +119,11 @@ public class User {
         this.state = state;
     }
 
-    public String getZipCode() {
+    public Integer getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(String zipCode) {
+    public void setZipCode(Integer zipCode) {
         this.zipCode = zipCode;
     }
 
