@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 import java.util.Objects;
 
 @Entity
-public class User {
+public class User extends AbstractEntity {
 
     @Id
     @GeneratedValue
@@ -55,7 +55,7 @@ public class User {
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-    public User() {}
+    public User(String username, String password, String email, String addressLineOne, String addressLineTwo, String city, String state, Integer zipCode) {}
 
     public User(String username, String password) {
         this.username = username;
@@ -126,6 +126,9 @@ public class User {
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
+
+
+
 
     @Override
     public String toString() {
