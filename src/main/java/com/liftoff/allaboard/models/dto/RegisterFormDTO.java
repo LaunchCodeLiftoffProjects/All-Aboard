@@ -16,9 +16,7 @@ public class RegisterFormDTO extends LoginFormDTO {
     @Size(min = 5, max = 50, message = "Please enter an address between 5 and 50 characters.")
     private String addressLineOne;
 
-    @NotNull
-    @NotBlank(message = "This field can not be left blank!")
-    @Size(min = 1, max = 20, message = "Address too long.  Please enter a shorter address.")
+
     private String addressLineTwo;
 
     @NotNull
@@ -33,17 +31,16 @@ public class RegisterFormDTO extends LoginFormDTO {
 
     @NotNull
     @Positive(message = "This field can not be a negative number")
-    @Size(min = 5, max = 5, message = "Please enter a 5 digit zip code.")
-    private String zipCode;
+    private Integer zipCode;
 
 
     public String getVerifyPassword() {
             return verifyPassword;
         }
 
-        public void setVerifyPassword(String verifyPassword) {
-            this.verifyPassword = verifyPassword;
-        }
+    public void setVerifyPassword(String verifyPassword) {
+        this.verifyPassword = verifyPassword;
+    }
 
     public String getEmail() {
         return email;
@@ -85,11 +82,11 @@ public class RegisterFormDTO extends LoginFormDTO {
         this.state = state;
     }
 
-    public String getZipCode() {
+    public Integer getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(String zipCode) {
+    public void setZipCode(Integer zipCode) {
         this.zipCode = zipCode;
     }
 }
