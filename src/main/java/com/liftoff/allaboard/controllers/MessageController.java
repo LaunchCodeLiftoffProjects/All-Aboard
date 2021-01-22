@@ -1,5 +1,6 @@
 package com.liftoff.allaboard.controllers;
 
+import com.liftoff.allaboard.models.Game;
 import com.liftoff.allaboard.models.Message;
 import com.liftoff.allaboard.models.data.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("messaging")
@@ -48,17 +51,23 @@ public class MessageController {
     }
 
 
+    @RequestMapping(value = "games")
+    public String listGames(Model model) {
 
+        List<Game> l = new ArrayList<Game>();
+        l.add(new Game(1, "daves game"));
+        l.add(new Game(2, "barry's game"));
+        l.add(new Game(3, "minecraft"));
 
-    @GetMapping("wtf")
-    @ResponseBody
-    public String messageWtf() {
-        Message m = this.messageRepository.save(new Message("abc", 1, 2));
+        Iterable<Game> games = l;
 
-        int id = m.getId();
+        model.addAttribute("games", games);
 
-        return m.getTimeSent() + Integer.toString(id);
+        return "messages/list-games";
     }
+
+
+
 
 
 }

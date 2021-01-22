@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+
+</head>
+<body>
+
+
+
+<div class="container body-content">
+
+    <h1>games</h1>
+
+    <table >
+        <tr th:each="game : ${games}">
+            <td>
+                <p>
+                    Game Id:
+                    <a th:href="@{'messages/add/' + ${game.id}}" th:text="${game.name}"></a>
+                </p>
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+</body>
+</html>
