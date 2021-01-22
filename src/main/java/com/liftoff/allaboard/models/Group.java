@@ -2,10 +2,11 @@ package com.liftoff.allaboard.models;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-public class Group {
+public class Group extends AbstractEntity{
 
     @NotBlank(message = "This field cannot be left blank!")
     @Size(max = 150)
@@ -25,6 +26,9 @@ public class Group {
     private String groupLocation;
 
     private int groupMemberCount;
+
+    @AssertTrue(message = "You are the Admin of this group")
+    private boolean role;
 
     public String getGroupName() {
         return groupName;
@@ -70,7 +74,11 @@ public class Group {
         return groupMemberCount;
     }
 
-    public void setGroupMemberCount(int groupMemberCount) {
-        this.groupMemberCount = groupMemberCount;
+    public boolean isRole() {
+        return role;
+    }
+
+    public void setRole(boolean role) {
+        this.role = role;
     }
 }

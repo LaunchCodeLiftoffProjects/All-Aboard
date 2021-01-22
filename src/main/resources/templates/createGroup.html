@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" th:href="@{/style.css}" />
+
+    <title>Group</title>
+</head>
+<body class="container body-content">
+
+<form method="post">
+    <div class="form-group">
+        <h1>Create Group</h1>
+        <p>Please fill in this form to create a group</p>
+        <label>Group Name
+            <input class="form-control" th:field="${groupName}" th:required="required"/>
+        </label>
+        <p class="error" th:errors="${groupName}"></p>
+    </div>
+    <div class="form-group">
+        <label>Group Description
+            <input class="form-control" th:field="${group.groupDescription}"  th:required="required"/>
+        </label>
+        <p class="error" th:errors="${group.groupDescription}"></p>
+    </div>
+    <div class="form-group">
+        <label>Group Rules
+            <input class="form-control" th:field="${group.groupRules}" th:required="required"/>
+        </label>
+        <p class="error" th:errors="${group.groupRules}"></p>
+    </div>
+    <div class="form-group">
+        <label>Group Location
+            <input class="form-control" th:field="${group.groupLocation}" th:required="required"/>
+        </label>
+        <p class="error" th:errors="${group.groupLocation}"></p>
+    </div>
+
+    <input type="submit" class="btn btn-primary" value="Create Group" />
+</form>
+
+</body>
+</html>

@@ -52,6 +52,7 @@ public class User {
     @Size(max = 5)
     private String zipCode;
 
+    private int groupId;
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
@@ -125,6 +126,10 @@ public class User {
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
+    }
+
+    public int getGroupId() {
+        return groupId;
     }
 
     @Override
