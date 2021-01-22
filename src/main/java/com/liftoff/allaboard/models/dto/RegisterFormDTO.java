@@ -16,6 +16,7 @@ public class RegisterFormDTO extends LoginFormDTO {
     @Size(min = 5, max = 50, message = "Please enter an address between 5 and 50 characters.")
     private String addressLineOne;
 
+
     private String addressLineTwo;
 
     @NotNull

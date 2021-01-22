@@ -11,13 +11,6 @@ import javax.validation.constraints.Size;
 @Entity
 public class User extends AbstractEntity {
 
-//    @Id
-//    @GeneratedValue
-//    private int id;
-
-    @NotBlank(message = "This field cannot be left blank!")
-    @Size(max = 150)
-    private String name;
 
     @NotNull
     private String username;
@@ -59,20 +52,8 @@ public class User extends AbstractEntity {
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
-        this.name = "name";
     }
 
-//    public int getId() {
-//        return id;
-//    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getUsername() {
         return username;
@@ -131,21 +112,9 @@ public class User extends AbstractEntity {
 
     @Override
     public String toString() {
-        return name;
+        return username;
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        User user = (User) o;
-//        return id == user.id;
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(id);
-//    }
 
     public boolean isMatchingPassword(String password) {
         return encoder.matches(password, pwHash);
