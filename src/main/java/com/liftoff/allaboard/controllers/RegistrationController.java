@@ -76,7 +76,7 @@ public class RegistrationController {
             return "register";
         }
 
-        User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword());
+        User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword(), registerFormDTO.getEmail(), registerFormDTO.getAddressLineOne(), registerFormDTO.getAddressLineTwo(), registerFormDTO.getCity(), registerFormDTO.getState(), registerFormDTO.getZipCode());
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
