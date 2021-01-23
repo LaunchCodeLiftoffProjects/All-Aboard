@@ -2,25 +2,52 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8"/>
-    <title>Title</title>
-
+    <title>All Aboard Profile Page</title>
 </head>
-<body >
+<body>
 
-<div class="card" style="background-color: #8B4513; text-align: right">
-    <img class="card-img-top" src="/static/images/default_profile_pic.jpg" style="height:250px; border-radius: 50%; border: 10px solid #000080">
-    <div class="card-body">
-        <h5 class="card-title" style="text-align:center;">Profile</h5>
-<!--        <p class="card-text">Edit Profile Pic</p>-->
 
-    </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item"><a href="/index">Home</a></li>
-        <li class="list-group-item"><a href="/map">View Map</a></li>
-        <li class="list-group-item"><a href="/messages">My Messages</a></li>
-        <li class="list-group-item"><a href="/groups">My Group</a></li>
-    </ul>
+<div style="background-color: #DCDCDC; text-align: right; padding: 25px">
+    <img style="height:250px" th:src="@{/resources/static/images/default_profile_pic.jpg}">
+    <h1 class="card-title" style="color: #2F4F4F; font-size: 100px; text-align:center">Profile</h1>
 </div>
+
+<div class="row">
+    <div class="col-sm-6" style="width: 18rem; border: 1px solid rgba(0,0,0,.125); border-radius: .25rem;">
+        <div class="card">
+            <h2 class="card-header">Home</h2>
+            <div class="card-body">
+                <h5 class="card-title">Visit the home page</h5>
+                <a href="/index" class="btn btn-primary">Take Me Home</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6" style="width: 18rem; border: 1px solid rgba(0,0,0,.125); border-radius: .25rem;">
+        <div class="card">
+            <h2 class="card-header">Map</h2>
+            <div class="card-body">
+                <h5 class="card-title">Find a local group using our map feature!</h5>
+                <a href="/map" class="btn btn-primary">To the map!</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6" style="width: 18rem; border: 1px solid rgba(0,0,0,.125); border-radius: .25rem;">
+        <div class="card">
+            <h2 class="card-header">My Groups</h2>
+            <div class="card-body">
+                <h5 class="card-title">Here are the groups you are a member of:</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" th:each="group : ${groups}">
+                            <a th:text="${group.name}"></a>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--        <li class="list-group-item"><a href="/messages">My Messages</a></li>-->
+<!--        <li class="list-group-item"><a href="/groups">My Group</a></li>-->
+<!--    </ul>-->
 
 <!--<h3>Click "Choose File" button to upload a file:</h3>-->
 <!--<form action="/action_page.php">-->
