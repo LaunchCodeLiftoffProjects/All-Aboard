@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" th:href="@{/style.css}" />
+
+    <title>Delete Group</title>
+</head>
+<body class="container body-content">
+
+
+    <th:block th:each="group : ${groups}">
+        <div class="form-group">
+            <label>
+                <span th:text="${group.groupName}"></span>
+                <input type="checkbox" name="groupIds"  th:value="${group.groupId}" class="form-control">
+            </label>
+        </div>
+    </th:block>
+
+
+    <input type="submit" value="Delete Group" class="btn btn-danger">
+</form>
+
+</body>
+</html>

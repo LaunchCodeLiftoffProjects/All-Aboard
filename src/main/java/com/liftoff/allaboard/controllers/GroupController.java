@@ -49,7 +49,7 @@ public class GroupController {
         model.addAttribute("title", "Delete Group");
         model.addAttribute("groups", groupRepository.findAll());
         return "group/delete";
-    }// lives at /events/delete
+    }
 
     @PostMapping("delete")
     public String processDeleteGroupForm(@RequestParam(required = false) int[] groupIds) {
@@ -63,20 +63,20 @@ public class GroupController {
     }
 
     @GetMapping("edit/{groupId}")
-    public String displayEditForm(Model model, @PathVariable int groupId) {
+    public String displayGroupEditForm(Model model, @PathVariable int groupId) {
         Group group = groupRepository.findByGroupId(groupId);
         model.addAttribute("group", group);
         if (group != null) {
             model.addAttribute("title", "Edit Group " + group.getGroupName() + " (ID=" + group.getGroupId() + ")");
         }
-        return "events/edit";
+        return "group/edit";
     }
 
     @PostMapping("edit")
-    public String processEditForm(int groupId, String name, String description) {
+    public String processGroupEditForm(int groupId, String groupName, String groupDescription) {
         Group group = groupRepository.findByGroupId(groupId);
-        group.setGroupName(name);
-        group.setGroupDescription(description);
+        group.setGroupName(groupName);
+        group.setGroupDescription(groupDescription);
         return "redirect:";
 
     }

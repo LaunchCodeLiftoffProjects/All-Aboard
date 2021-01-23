@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" th:href="@{/style.css}" />
+
+    <title>Group</title>
+</head>
+<body class="container body-content">
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Group Name</th>
+        <th>Group Description</th>
+        <th>Group Rules</th>
+        <th>Group Location</th>
+        <th>Edit</th>
+    </tr>
+    </thead>
+
+    <tr  th:each="group : ${groups}">
+    <tr>
+        <td th:text="${group.groupName}"></td>
+    </tr>
+    <tr>
+        <td th:text="${group.groupDescription}"></td>
+    </tr>
+    <tr>
+        <td th:text="${group.groupRules}"></td>
+    </tr>
+    <tr>
+        <td th:text="${group.groupLocation}"></td>
+    </tr>
+    <td>
+        <a th:href="@{/group/edit/{groupId}(Id=${group.groupId})}">Edit Group</a>
+    </td>
+    </tr>
+</table>
+
+</body>
+</html>
