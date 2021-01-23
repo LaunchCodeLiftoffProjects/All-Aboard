@@ -9,32 +9,42 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("")
 public class GroupController {
+
 
     @Autowired
     private GroupRepository groupRepository;
 
-    @GetMapping("createGroup") //lives at group/create
-    public String displayCreateGroupForm(Model model) {
-        model.addAttribute("title", "Create Group");
-        model.addAttribute(new Group());
-        return "createGroup";
-    }
-
-    @PostMapping("createGroup")
-    public String processCreateGroupForm(@ModelAttribute @Valid Group newGroup,
-                                          Errors errors, Model model) {
-        if (errors.hasErrors()) {
-            model.addAttribute("title", "Create Group");
-            return "createGroup";
-        }
+    @GetMapping("group") //lives at group
+    public String displayAllGroups(Model model) {
+            model.addAttribute("title", "All Groups");
+            model.addAttribute("groups", groupRepository.findAll());
         return "group";
     }
+
+    @GetMapping("create")
+    public String createGroupForm(Model model){
+        model.addAttribute("title", "Create Group");
+        model.addAttribute("group", new Group());
+        return "group/createGroup";
+    }
+
+    @PostMapping("group")
+    public String processGroupForm(@ModelAttribute @Valid Group newGroup,
+                                         Errors errors, Model model) {
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "Create Group");
+            model.addAttribute("group", new Group());
+            return "group/createGroup";
+        }
+        groupRepository.save(newGroup);
+        return "redirect:";
+    }
+
 
 }
