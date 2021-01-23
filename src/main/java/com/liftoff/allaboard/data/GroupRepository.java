@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface GroupRepository extends CrudRepository<Group, Integer> {
-
-   // Group findByGroupId(int groupId);
+       Group findByGroupId(int groupId);
 
 }

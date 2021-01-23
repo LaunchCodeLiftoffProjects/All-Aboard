@@ -32,14 +32,15 @@ public class Group extends AbstractEntity{
     @AssertTrue(message = "You are the Admin of this group")
     private boolean role;
 
-
-    public Group(String groupName) {
+    public Group(@NotBlank(message = "This field cannot be left blank!") @Size(max = 150) String groupName,
+                 @Size(max = 350) String groupDescription, @Size(max = 350) String groupRules,
+                 @Size(max = 150) String groupLocation, int groupMemberCount, @AssertTrue(message = "You are the Admin of this group") boolean role) {
         this.groupName = groupName;
-//        this.groupDescription = groupDescription;
-//        this.groupRules = groupRules;
-//        this.groupLocation = groupLocation;
-//        this.groupMemberCount = groupMemberCount;
-//        this.role = role;
+        this.groupDescription = groupDescription;
+        this.groupRules = groupRules;
+        this.groupLocation = groupLocation;
+        this.groupMemberCount = groupMemberCount;
+        this.role = role;
     }
 
     public Group(){
