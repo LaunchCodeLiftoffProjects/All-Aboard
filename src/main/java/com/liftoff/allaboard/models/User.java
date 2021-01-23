@@ -40,6 +40,8 @@ public class User extends AbstractEntity {
     @Positive
     private Integer zipCode;
 
+    private Integer groupId;
+
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
