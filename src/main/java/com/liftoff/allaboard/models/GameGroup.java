@@ -8,7 +8,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
-public class Group extends AbstractEntity{
+public class GameGroup extends AbstractEntity{
 
     @NotBlank(message = "This field cannot be left blank!")
     @Size(max = 150)
@@ -32,9 +32,9 @@ public class Group extends AbstractEntity{
     @AssertTrue(message = "You are the Admin of this group")
     private boolean role;
 
-    public Group(@NotBlank(message = "This field cannot be left blank!") @Size(max = 150) String groupName,
-                 @Size(max = 350) String groupDescription, @Size(max = 350) String groupRules,
-                 @Size(max = 150) String groupLocation, int groupMemberCount, @AssertTrue(message = "You are the Admin of this group") boolean role) {
+    public GameGroup(@NotBlank(message = "This field cannot be left blank!") @Size(max = 150) String groupName,
+                     @Size(max = 350) String groupDescription, @Size(max = 350) String groupRules,
+                     @Size(max = 150) String groupLocation, int groupMemberCount, @AssertTrue(message = "You are the Admin of this group") boolean role) {
         this.groupName = groupName;
         this.groupDescription = groupDescription;
         this.groupRules = groupRules;
@@ -43,7 +43,7 @@ public class Group extends AbstractEntity{
         this.role = role;
     }
 
-    public Group(){
+    public GameGroup(){
     }
 
     public String getGroupName() { return groupName; }

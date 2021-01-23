@@ -11,11 +11,11 @@
 <body class="container body-content">
 
 
-    <th:block th:each="group : ${groups}">
-        <div class="form-group">
+    <th:block th:each="gameGroup : ${groups}">
+        <div class="form-gameGroup">
             <label>
-                <span th:text="${group.groupName}"></span>
-                <input type="checkbox" name="groupIds"  th:value="${group.groupId}" class="form-control">
+                <span th:text="${gameGroup.gameGroupName}"></span>
+                <input type="checkbox" name="groupIds"  th:value="${gameGroup.groupId}" class="form-control">
             </label>
         </div>
     </th:block>

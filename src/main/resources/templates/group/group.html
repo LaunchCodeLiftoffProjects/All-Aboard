@@ -21,21 +21,21 @@
     </tr>
     </thead>
 
-    <tr  th:each="group : ${groups}">
+    <tr  th:each="gameGroup : ${groups}">
     <tr>
-        <td th:text="${group.groupName}"></td>
+        <td th:text="${gameGroup.gameGroupName}"></td>
     </tr>
     <tr>
-        <td th:text="${group.groupDescription}"></td>
+        <td th:text="${gameGroup.gameGroupDescription}"></td>
     </tr>
     <tr>
-        <td th:text="${group.groupRules}"></td>
+        <td th:text="${gameGroup.gameGroupRules}"></td>
     </tr>
     <tr>
-        <td th:text="${group.groupLocation}"></td>
+        <td th:text="${gameGroup.gameGroupLocation}"></td>
     </tr>
     <td>
-        <a th:href="@{/group/edit/{groupId}(Id=${group.groupId})}">Edit Group</a>
+        <a th:href="@{/gameGroup/edit/{groupId}(Id=${gameGroup.groupId})}">Edit Group</a>
     </td>
     </tr>
 </table>

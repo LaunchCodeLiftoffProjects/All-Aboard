@@ -1,54 +1,47 @@
 package com.liftoff.allaboard.models.dto;
 
-import com.liftoff.allaboard.models.Group;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 public class GroupFormDTO {
 
     @NotBlank
-    private Group groupName;
+    private String gameGroupName;
 
-    private Group groupDescription;
+    private String gameGroupDescription;
 
-    private Group groupRules;
+    private String gameGroupRules;
 
-    private Group groupLocation;
+    private String gameGroupLocation;
 
-    public Group getGroupName() {
-        return groupName;
+    public String getGameGroupName() {
+        return gameGroupName;
     }
 
-    public void setGroupName(Group groupName) {
-        this.groupName = groupName;
+    public void setGameGroupName(String gameGroupName) {
+        this.gameGroupName = gameGroupName;
     }
 
-    public Group getGroupDescription() {
-        return groupDescription;
+    public String getGameGroupDescription() {
+        return gameGroupDescription;
     }
 
-    public void setGroupDescription(Group groupDescription) {
-        this.groupDescription = groupDescription;
+    public void setGameGroupDescription(String gameGroupDescription) {
+        this.gameGroupDescription = gameGroupDescription;
     }
 
-    public Group getGroupRules() {
-        return groupRules;
+    public String getGameGroupRules() {
+        return gameGroupRules;
     }
 
-    public void setGroupRules(Group groupRules) {
-        this.groupRules = groupRules;
+    public void setGameGroupRules(String gameGroupRules) {
+        this.gameGroupRules = gameGroupRules;
     }
 
-    public Group getGroupLocation() {
-        return groupLocation;
+    public String getGameGroupLocation() {
+        return gameGroupLocation;
     }
 
-    public void setGroupLocation(Group groupLocation) {
-        this.groupLocation = groupLocation;
+    public void setGameGroupLocation(String gameGroupLocation) {
+        this.gameGroupLocation = gameGroupLocation;
     }
 }

@@ -1,7 +1,7 @@
 package com.liftoff.allaboard.controllers;
 
 import com.liftoff.allaboard.data.GroupRepository;
-import com.liftoff.allaboard.models.Group;
+import com.liftoff.allaboard.models.GameGroup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,19 +28,19 @@ public class GroupController {
     @GetMapping("create")
     public String createGroupForm(Model model){
         model.addAttribute("title", "Create Group");
-        model.addAttribute("group", new Group());
+        model.addAttribute("group", new GameGroup());
         return "group/createGroup";
     }
 
     @PostMapping("group")
-    public String processGroupForm(@ModelAttribute @Valid Group newGroup,
+    public String processGroupForm(@ModelAttribute @Valid GameGroup newGameGroup,
                                          Errors errors, Model model) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Create Group");
-            model.addAttribute("group", new Group());
+            model.addAttribute("group", new GameGroup());
             return "group/createGroup";
         }
-        groupRepository.save(newGroup);
+        groupRepository.save(newGameGroup);
         return "redirect:";
     }
 
@@ -64,21 +64,45 @@ public class GroupController {
 
     @GetMapping("edit/{groupId}")
     public String displayGroupEditForm(Model model, @PathVariable int groupId) {
-        Group group = groupRepository.findByGroupId(groupId);
-        model.addAttribute("group", group);
-        if (group != null) {
-            model.addAttribute("title", "Edit Group " + group.getGroupName() + " (ID=" + group.getGroupId() + ")");
+        Optional<GameGroup> gameGroup = groupRepository.findById(groupId);
+        if (gameGroup.isEmpty()) {
+            model.addAttribute("title", "Invalid Game ID: " + groupId);
+        } else {
+            model.addAttribute("group", gameGroup.get());
+            if (gameGroup != null) {
+                model.addAttribute("title", "Edit Group " + gameGroup.get().getGroupName() + " (ID=" + gameGroup.get().getId() + ")");
+            }
         }
         return "group/edit";
     }
 
     @PostMapping("edit")
-    public String processGroupEditForm(int groupId, String groupName, String groupDescription) {
-        Group group = groupRepository.findByGroupId(groupId);
-        group.setGroupName(groupName);
-        group.setGroupDescription(groupDescription);
+    public String processGroupEditForm(Model model, int groupId, String groupName, String groupDescription) {
+        Optional<GameGroup> gameGroup = groupRepository.findById(groupId);
+        if (gameGroup.isEmpty()) {
+            model.addAttribute("Invalid Game ID: " + groupId);
+        }   else {
+            model.addAttribute(gameGroup.get());
+            gameGroup.get().setGroupName(groupName);
+            gameGroup.get().setGroupDescription(groupDescription);
+            }
         return "redirect:";
-
     }
 
+    @GetMapping("createGroup") //lives at group/create
+    public String displayCreateGroupForm(Model model) {
+        model.addAttribute("title", "Create Group");
+        //model.addAttribute(new Group());
+        return "createGroup";
+    }
+
+    @PostMapping("createGroup")
+    public String processCreateGroupForm(@ModelAttribute @Valid GameGroup newGameGroup,
+                                         Errors errors, Model model) {
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "Create Group");
+            return "createGroup";
+        }
+        return "group";
+    }
 }
