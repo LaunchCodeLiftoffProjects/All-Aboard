@@ -15,7 +15,7 @@
             <td>
                 <p>
                     Game Id:
-                    <a th:href="@{'messages/add/' + ${game.id}}" th:text="${game.name}"></a>
+                    <a th:href="@{'addFromGame?gameId=' + ${game.id}}" th:text="${game.name}"></a>
                 </p>
             </td>
         </tr>

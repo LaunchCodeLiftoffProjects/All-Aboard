@@ -2,11 +2,22 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <!--<head th:replace="fragments :: head"></head>-->
 <body class="container  body-content">
-<h1>Add Message</h1>
+
 
 <!--<nav th:replace="fragments :: page-header"></nav>-->
 
-<form method="post" style="max-width:600px;" ac>
+<table>
+    <tr th:each="msg : ${messages}">
+        <td>
+            <p th:text="'(' + ${msg.fromUserId} + '): ' + ${msg.timeSent} + '>>>' + ${msg.messageText}"></p>
+
+        </td>
+    </tr>
+</table>
+
+
+<form method="post" style="max-width:600px;" action="add">
+    <input type="hidden" th:value="${message.toGameGroupId}" name="toGameGroupId" />
     <div class="form-group">
         <label th:for="messageText">Text</label>
         <input class="form-control" th:field="${message.messageText}" />

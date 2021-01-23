@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -16,7 +17,7 @@ public class Message {
     @NotNull
     private String messageText;
 
-    private LocalDate timeSent;
+    private LocalDateTime timeSent;
     private int fromUserId;
     private int toGameGroupId;
 
@@ -26,7 +27,7 @@ public class Message {
     }
 
     public Message(String messageText, int fromUserId, int toGameGroupId) {
-        this.timeSent = LocalDate.now();
+        this.timeSent = LocalDateTime.now();
         setMessageText(messageText);
         setFromUserId(fromUserId);
         setToGameGroupId(toGameGroupId);
@@ -45,11 +46,11 @@ public class Message {
         this.messageText = messageText;
     }
 
-    public LocalDate getTimeSent() {
+    public LocalDateTime getTimeSent() {
         return timeSent;
     }
 
-    public void setTimeSent(LocalDate timeSent) {
+    public void setTimeSent(LocalDateTime timeSent) {
         this.timeSent = timeSent;
     }
 
