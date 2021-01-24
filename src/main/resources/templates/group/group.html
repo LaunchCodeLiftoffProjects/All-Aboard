@@ -22,20 +22,12 @@
     </thead>
 
     <tr  th:each="gameGroup : ${groups}">
-    <tr>
         <td th:text="${gameGroup.gameGroupName}"></td>
-    </tr>
-    <tr>
         <td th:text="${gameGroup.gameGroupDescription}"></td>
-    </tr>
-    <tr>
         <td th:text="${gameGroup.gameGroupRules}"></td>
-    </tr>
-    <tr>
         <td th:text="${gameGroup.gameGroupLocation}"></td>
-    </tr>
     <td>
-        <a th:href="@{/gameGroup/edit/{groupId}(Id=${gameGroup.groupId})}">Edit Group</a>
+        <a th:href="@{/group/edit/{groupId}(Id=${gameGroup.id})}">Edit Group</a>
     </td>
     </tr>
 </table>

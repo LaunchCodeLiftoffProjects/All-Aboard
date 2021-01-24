@@ -3,14 +3,19 @@ package com.liftoff.allaboard.models;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User extends AbstractEntity {
 
+    @ManyToMany
+    private final List<GameGroup> gameGroup = new ArrayList<>();
 
     @NotNull
     private String username;
@@ -39,8 +44,6 @@ public class User extends AbstractEntity {
     @NotNull
     @Positive
     private Integer zipCode;
-
-    private Integer groupId;
 
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -109,8 +112,12 @@ public class User extends AbstractEntity {
         this.zipCode = zipCode;
     }
 
-    public int getGroupId() {
-        return groupId;
+    public List<GameGroup> getGameGroup() {
+        return gameGroup;
+    }
+
+    public void addGameGroup(GameGroup gameGroup) {
+        this.gameGroup.add(gameGroup);
     }
 
     @Override

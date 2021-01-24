@@ -1,7 +1,10 @@
 package com.liftoff.allaboard.controllers;
 
 import com.liftoff.allaboard.data.GroupRepository;
+import com.liftoff.allaboard.data.UserRepository;
 import com.liftoff.allaboard.models.GameGroup;
+import com.liftoff.allaboard.models.User;
+import com.liftoff.allaboard.models.dto.UserGroupDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Optional;
 
+@RequestMapping("group")
 @Controller
 public class GroupController {
 
@@ -18,30 +22,37 @@ public class GroupController {
     @Autowired
     private GroupRepository groupRepository;
 
-    @GetMapping("group") //lives at group
+    @Autowired
+    private UserRepository userRepository;
+
+    @GetMapping("") //lives at group
     public String displayAllGroups(Model model) {
-            model.addAttribute("title", "All Groups");
-            model.addAttribute("groups", groupRepository.findAll());
-        return "group";
+        if (groupRepository == null) {
+            model.addAttribute("title", "No Game Groups Available ");
+        } else {
+                model.addAttribute("title", "All Groups");
+                model.addAttribute("groups", groupRepository.findAll());
+        }
+        return "group/group";
     }
 
     @GetMapping("create")
     public String createGroupForm(Model model){
         model.addAttribute("title", "Create Group");
-        model.addAttribute("group", new GameGroup());
+        model.addAttribute("gameGroup", new GameGroup());
         return "group/createGroup";
     }
 
-    @PostMapping("group")
-    public String processGroupForm(@ModelAttribute @Valid GameGroup newGameGroup,
+    @PostMapping("create")
+    public String processCreateGroupForm(@ModelAttribute @Valid GameGroup newGameGroup,
                                          Errors errors, Model model) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Create Group");
-            model.addAttribute("group", new GameGroup());
+            model.addAttribute("gameGroup", new GameGroup());
             return "group/createGroup";
         }
         groupRepository.save(newGameGroup);
-        return "redirect:";
+        return "redirect:/group";
     }
 
     @GetMapping("delete")
@@ -70,7 +81,7 @@ public class GroupController {
         } else {
             model.addAttribute("group", gameGroup.get());
             if (gameGroup != null) {
-                model.addAttribute("title", "Edit Group " + gameGroup.get().getGroupName() + " (ID=" + gameGroup.get().getId() + ")");
+                model.addAttribute("title", "Edit Group " + gameGroup.get().getGameGroupName() + " (ID=" + gameGroup.get().getId() + ")");
             }
         }
         return "group/edit";
@@ -83,26 +94,50 @@ public class GroupController {
             model.addAttribute("Invalid Game ID: " + groupId);
         }   else {
             model.addAttribute(gameGroup.get());
-            gameGroup.get().setGroupName(groupName);
-            gameGroup.get().setGroupDescription(groupDescription);
+            gameGroup.get().setGameGroupName(groupName);
+            gameGroup.get().setGameGroupDescription(groupDescription);
             }
-        return "redirect:";
+        return "redirect:/";
+    }
+//    @GetMapping("add-group")
+//    public String displayGameGroupToUserForm(@RequestParam Integer eventId, Model model) {
+//        Optional<Event> result = eventRepository.findById(eventId);
+//        Event event = result.get();
+//        model.addAttribute("title", "Add Tag to: " + event.getName());
+//        model.addAttribute("tags", tagRepository.findAll());
+//        EventTagDTO eventTag = new EventTagDTO();
+//        eventTag.setEvent(event);
+//        model.addAttribute("eventTag", eventTag);
+//        return "events/add-tag.html";
+//    }
+
+    @GetMapping("add-group")
+    public String displayGameGroupToUserForm(@RequestParam Integer userId, Model model) {
+        Optional<User> result = userRepository.findById(userId);
+        User user = result.get();
+        model.addAttribute("title", "Add Group to: " + user.getUsername());
+        model.addAttribute("gameGroups", groupRepository.findAll());
+        UserGroupDTO userGroupDTO = new UserGroupDTO();
+        userGroupDTO.setUser(user);
+        model.addAttribute("userGroup", userGroupDTO);
+        return "user/add-group.html";
     }
 
-    @GetMapping("createGroup") //lives at group/create
-    public String displayCreateGroupForm(Model model) {
-        model.addAttribute("title", "Create Group");
-        //model.addAttribute(new Group());
-        return "createGroup";
-    }
+    @PostMapping("add-group")
+    public String processGameGroupToUserForm(@ModelAttribute @Valid UserGroupDTO userGroup,
+                                             Errors errors, Model model) {
 
-    @PostMapping("createGroup")
-    public String processCreateGroupForm(@ModelAttribute @Valid GameGroup newGameGroup,
-                                         Errors errors, Model model) {
-        if (errors.hasErrors()) {
-            model.addAttribute("title", "Create Group");
-            return "createGroup";
+        if (!errors.hasErrors()) {
+            User user = userGroup.getUser();
+            GameGroup gameGroup = userGroup.getGameGroup();
+            if (!user.getGameGroup().contains(userGroup)){
+                user.addGameGroup(gameGroup);
+                userRepository.save(user);
+            }
+            return "redirect:group?userId=" + user.getId();
         }
-        return "group";
+
+        return "redirect:add-group";
     }
+
 }

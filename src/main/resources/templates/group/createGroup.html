@@ -18,34 +18,33 @@
 
     <div class="form-gameGroup">
         <label>Group Name
-            <input class="form-control" th:field="${gameGroupName}" th:required="required"/>
+            <input class="form-control" type="text" th:field="${gameGroup.gameGroupName}" th:required="required"/>
         </label>
-        <p class="error" th:errors="${gameGroupName}"></p>
+        <p class="error" th:errors="${gameGroup.gameGroupName}"></p>
     </div>
-
     <div class="form-gameGroup">
         <label>Group Description
-            <input class="form-control" th:field="${gameGroup.gameGroupDescription}"  th:required="required"/>
+            <input class="form-control" type="text" th:field="${gameGroup.gameGroupDescription}"  th:required="required"/>
         </label>
         <p class="error" th:errors="${gameGroup.gameGroupDescription}"></p>
     </div>
     <div class="form-gameGroup">
         <label>Group Rules
-            <input class="form-control" th:field="${gameGroup.gameGroupRules}" th:required="required"/>
+            <input class="form-control" type="text" th:field="${gameGroup.gameGroupRules}" th:required="required"/>
         </label>
         <p class="error" th:errors="${gameGroup.gameGroupRules}"></p>
     </div>
     <div class="form-gameGroup">
         <label>Group Location
-            <input class="form-control" th:field="${gameGroup.gameGroupLocation}" th:required="required"/>
+            <input class="form-control" type="text" th:field="${gameGroup.gameGroupLocation}" th:required="required"/>
         </label>
         <p class="error" th:errors="${gameGroup.gameGroupLocation}"></p>
     </div>
     <div>
-        <form action="upload.php" method="post">
-        Select image to upload:
-        <input type="file" name="file" id="file"/>
-    </form>
+<!--        <form action="upload.php" method="post">-->
+<!--        Select image to upload:-->
+<!--        <input type="file" name="file" id="file"/>-->
+<!--    </form>-->
     </div>
 
     <input type="submit" class="btn btn-primary" value="Create Group" />

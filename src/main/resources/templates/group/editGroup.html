@@ -14,7 +14,7 @@
     <p>The gameGroup you are trying to edit does not exist.</p>
 </th:block>
 <th:block >
-    <form method="post" th:action="@{/gameGroup/edit}">
+    <form method="post" th:action="@{/group/edit}">
         <div class="form-gameGroup">
             <h1>Edit Group</h1>
             <p>Please fill in areas you wish to edit</p>
@@ -31,21 +31,21 @@
         </div>
         <div class="form-gameGroup">
             <label>Group Rules
-                <input class="form-control" th:field="${gameGroup.gameGroupRules}" th:required="required"/>
+                <input type ="text" name="rules" class="form-control" th:value="${gameGroup.gameGroupRules}">
             </label>
             <p class="error" th:errors="${gameGroup.gameGroupRules}"></p>
         </div>
         <div class="form-gameGroup">
             <label>Group Location
-                <input class="form-control" th:field="${gameGroup.gameGroupLocation}" th:required="required"/>
+                <input type ="text" name="location" class="form-control" th:value="${gameGroup.gameGroupLocation}">
             </label>
             <p class="error" th:errors="${gameGroup.gameGroupLocation}"></p>
         </div>
         <div>
-            <form action="upload.php" method="post">
-                Select new image to upload:
-                <input type="file" name="file" id="file"/>
-            </form>
+<!--            <form action="upload.php" method="post">-->
+<!--                Select new image to upload:-->
+<!--                <input type="file" name="file" id="file"/>-->
+<!--            </form>-->
         </div>
         <input type="hidden" th:value="${gameGroup.groupId}" name="groupId" />
         <div class="form-gameGroup">
