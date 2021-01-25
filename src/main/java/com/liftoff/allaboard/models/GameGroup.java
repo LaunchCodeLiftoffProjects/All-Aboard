@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 public class GameGroup extends AbstractEntity{
 
-    @ManyToMany(mappedBy = "group")
+    @ManyToMany(mappedBy = "gameGroup")
     private final List<User> user = new ArrayList<>();
 
     @NotBlank(message = "This field cannot be left blank!")

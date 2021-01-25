@@ -73,11 +73,11 @@ public class GroupController {
 
     }
 
-    @GetMapping("edit/{groupId}")
-    public String displayGroupEditForm(Model model, @PathVariable int groupId) {
-        Optional<GameGroup> gameGroup = groupRepository.findById(groupId);
+    @GetMapping("edit/{gameGroupId}")
+    public String displayGroupEditForm(Model model, @PathVariable int gameGroupId) {
+        Optional<GameGroup> gameGroup = groupRepository.findById(gameGroupId);
         if (gameGroup.isEmpty()) {
-            model.addAttribute("title", "Invalid Game ID: " + groupId);
+            model.addAttribute("title", "Invalid Game ID: " + gameGroupId);
         } else {
             model.addAttribute("group", gameGroup.get());
             if (gameGroup != null) {
