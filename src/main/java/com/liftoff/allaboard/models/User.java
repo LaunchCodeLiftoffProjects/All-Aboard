@@ -10,13 +10,14 @@ import javax.validation.constraints.Size;
 
 @Entity
 public class User extends AbstractEntity {
+    public User(){}
 
 
     @NotNull
     private String username;
 
     @NotNull
-    private String pwHash;
+    private String pw_hash;
 
     @NotBlank(message = "This field cannot be left blank!")
     @Size(max = 50)
@@ -45,7 +46,7 @@ public class User extends AbstractEntity {
 
     public User(String username, String password, String email, String addressLineOne, String addressLineTwo, String city, String state, Integer zipCode) {
         this.username = username;
-        this.pwHash = encoder.encode(password);
+        this.pw_hash = encoder.encode(password);
         this.email = email;
         this.addressLineOne = addressLineOne;
         this.addressLineTwo = addressLineTwo;
@@ -117,7 +118,7 @@ public class User extends AbstractEntity {
 
 
     public boolean isMatchingPassword(String password) {
-        return encoder.matches(password, pwHash);
+        return encoder.matches(password, pw_hash);
     }
 
 
