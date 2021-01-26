@@ -11,18 +11,12 @@ public abstract class AbstractEntity {
     @GeneratedValue
     private int id;
 
-//    @Id
-//    @GeneratedValue
-//    private int groupId;
-
     public AbstractEntity() {
     }
 
     public int getId() {
         return this.id;
     }
-
-//    public int getGroupId() { return groupId; }
 
     public boolean equals(Object o) {
         if (this == o) {

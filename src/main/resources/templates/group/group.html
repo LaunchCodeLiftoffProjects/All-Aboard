@@ -27,7 +27,8 @@
         <td th:text="${gameGroup.gameGroupRules}"></td>
         <td th:text="${gameGroup.gameGroupLocation}"></td>
     <td>
-        <a th:href="@{/group/edit/{groupId}(Id=${gameGroup.id})}">Edit Group</a>
+        <a th:href="@{'/group/edit/' + ${gameGroup.id}}">Edit Group</a>
+
     </td>
     </tr>
 </table>

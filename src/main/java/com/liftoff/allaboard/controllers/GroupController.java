@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Optional;
 
+
 @RequestMapping("group")
 @Controller
 public class GroupController {
@@ -56,14 +57,14 @@ public class GroupController {
     }
 
     @GetMapping("delete")
-    public String displayDeleteGroupForm(Model model) {
+    public String displayDeleteGameGroupForm(Model model) {
         model.addAttribute("title", "Delete Group");
         model.addAttribute("groups", groupRepository.findAll());
         return "group/delete";
     }
 
     @PostMapping("delete")
-    public String processDeleteGroupForm(@RequestParam(required = false) int[] groupIds) {
+    public String processDeleteGameGroupForm(@RequestParam(required = false) int[] groupIds) {
         if (groupIds != null) {
             for (int id : groupIds) {
                 groupRepository.deleteById(id);
@@ -74,42 +75,31 @@ public class GroupController {
     }
 
     @GetMapping("edit/{gameGroupId}")
-    public String displayGroupEditForm(Model model, @PathVariable int gameGroupId) {
-        Optional<GameGroup> gameGroup = groupRepository.findById(gameGroupId);
+    public String displayGameGroupEditForm(Model model, @PathVariable int gameGroupId) {
+              Optional<GameGroup> gameGroup = groupRepository.findById(gameGroupId);
         if (gameGroup.isEmpty()) {
             model.addAttribute("title", "Invalid Game ID: " + gameGroupId);
         } else {
-            model.addAttribute("group", gameGroup.get());
+            model.addAttribute("gameGroup", gameGroup.get());
             if (gameGroup != null) {
                 model.addAttribute("title", "Edit Group " + gameGroup.get().getGameGroupName() + " (ID=" + gameGroup.get().getId() + ")");
             }
         }
-        return "group/edit";
+        return "group/editGroup";
     }
 
     @PostMapping("edit")
-    public String processGroupEditForm(Model model, int groupId, String groupName, String groupDescription) {
-        Optional<GameGroup> gameGroup = groupRepository.findById(groupId);
+    public String processGameGroupEditForm(Model model, int gameGroupId, String gameGroupName, String gameGroupDescription) {
+        Optional<GameGroup> gameGroup = groupRepository.findById(gameGroupId);
         if (gameGroup.isEmpty()) {
-            model.addAttribute("Invalid Game ID: " + groupId);
+            model.addAttribute("Invalid Game ID: " + gameGroupId);
         }   else {
             model.addAttribute(gameGroup.get());
-            gameGroup.get().setGameGroupName(groupName);
-            gameGroup.get().setGameGroupDescription(groupDescription);
+            gameGroup.get().setGameGroupName(gameGroupName);
+            gameGroup.get().setGameGroupDescription(gameGroupDescription);
             }
-        return "redirect:/";
+        return "redirect:";
     }
-//    @GetMapping("add-group")
-//    public String displayGameGroupToUserForm(@RequestParam Integer eventId, Model model) {
-//        Optional<Event> result = eventRepository.findById(eventId);
-//        Event event = result.get();
-//        model.addAttribute("title", "Add Tag to: " + event.getName());
-//        model.addAttribute("tags", tagRepository.findAll());
-//        EventTagDTO eventTag = new EventTagDTO();
-//        eventTag.setEvent(event);
-//        model.addAttribute("eventTag", eventTag);
-//        return "events/add-tag.html";
-//    }
 
     @GetMapping("add-group")
     public String displayGameGroupToUserForm(@RequestParam Integer userId, Model model) {

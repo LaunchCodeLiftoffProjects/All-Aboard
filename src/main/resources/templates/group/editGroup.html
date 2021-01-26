@@ -21,23 +21,23 @@
         </div>
         <div class="form-gameGroup">
             <label>Group Name
-                <input type ="text" name="name" class="form-control" th:value="${gameGroup.gameGroupName}">
+                <input class="form-control" type="text" th:field="${gameGroup.gameGroupName}" th:required="required"/>
             </label>
         </div>
         <div class="form-gameGroup">
             <label>Group Description
-                <input type ="text" name="description" class="form-control" th:value="${gameGroup.gameGroupDescription}">
+                <input class="form-control" type="text" th:field="${gameGroup.gameGroupDescription}"  th:required="required"/>
             </label>
         </div>
         <div class="form-gameGroup">
             <label>Group Rules
-                <input type ="text" name="rules" class="form-control" th:value="${gameGroup.gameGroupRules}">
+                <input class="form-control" type="text" th:field="${gameGroup.gameGroupRules}" th:required="required"/>
             </label>
             <p class="error" th:errors="${gameGroup.gameGroupRules}"></p>
         </div>
         <div class="form-gameGroup">
             <label>Group Location
-                <input type ="text" name="location" class="form-control" th:value="${gameGroup.gameGroupLocation}">
+                <input class="form-control" type="text" th:field="${gameGroup.gameGroupLocation}" th:required="required"/>
             </label>
             <p class="error" th:errors="${gameGroup.gameGroupLocation}"></p>
         </div>
@@ -47,7 +47,7 @@
 <!--                <input type="file" name="file" id="file"/>-->
 <!--            </form>-->
         </div>
-        <input type="hidden" th:value="${gameGroup.groupId}" name="groupId" />
+        <input type="hidden" th:value="${gameGroup.id}" name="gameGroupId" />
         <div class="form-gameGroup">
             <input type="submit" value="Edit Group" class="btn btn-success">
         </div>
