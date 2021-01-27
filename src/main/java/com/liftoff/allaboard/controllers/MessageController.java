@@ -28,7 +28,7 @@ public class MessageController {
 
 
     @GetMapping("addFromGame")
-    public String addFromGame(Model model, @RequestParam String gameId) {
+    public String addFromGame(Model model, @RequestParam String gameId, @RequestParam String gameName) {
         Integer theGameId = Integer.parseInt(gameId);
         Message m = new Message();
         m.setToGameGroupId(theGameId);
@@ -46,6 +46,7 @@ public class MessageController {
 
 
         model.addAttribute("messages", lst);
+        model.addAttribute("gameName", gameName);
 
         return "messages/add";
     }
@@ -59,7 +60,7 @@ public class MessageController {
 
     @PostMapping("add")
     public String processAddMessageForm(@ModelAttribute @Valid Message message,
-                                        Errors errors, Authentication authentication, Model model) {
+                                        Errors errors, Authentication authentication, @RequestParam String gameName) {
 
 //        if (errors.hasErrors()) {
 //            return "employers/add";
@@ -76,7 +77,7 @@ public class MessageController {
 
         this.messageRepository.save(message);
 
-        return "redirect:addFromGame?gameId=" + message.getToGameGroupId();
+        return "redirect:addFromGame?gameId=" + message.getToGameGroupId() + "&gameName=" + gameName;
 
     }
 
@@ -85,9 +86,9 @@ public class MessageController {
     public String listGames(Model model) {
 
         List<Game> l = new ArrayList<Game>();
-        l.add(new Game(1, "daves game"));
-        l.add(new Game(2, "barry's game"));
-        l.add(new Game(3, "minecraft"));
+        l.add(new Game(1, "uno"));
+        l.add(new Game(2, "monopoly"));
+        l.add(new Game(3, "risk"));
 
         Iterable<Game> games = l;
 
