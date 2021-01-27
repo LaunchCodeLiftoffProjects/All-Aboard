@@ -64,9 +64,9 @@ public class GroupController {
     }
 
     @PostMapping("delete")
-    public String processDeleteGameGroupForm(@RequestParam(required = false) int[] groupIds) {
-        if (groupIds != null) {
-            for (int id : groupIds) {
+    public String processDeleteGameGroupForm(@RequestParam(required = false) int[] gameGroupIds) {
+        if (gameGroupIds != null) {
+            for (int id : gameGroupIds) {
                 groupRepository.deleteById(id);
             }
         }
@@ -89,15 +89,20 @@ public class GroupController {
     }
 
     @PostMapping("edit")
-    public String processGameGroupEditForm(Model model, int gameGroupId, String gameGroupName, String gameGroupDescription) {
-        Optional<GameGroup> gameGroup = groupRepository.findById(gameGroupId);
-        if (gameGroup.isEmpty()) {
-            model.addAttribute("Invalid Game ID: " + gameGroupId);
+    public String processGameGroupEditForm(Model model, int gameGroupId, String gameGroupName, String gameGroupDescription, String gameGroupRules,
+                                           String gameGroupLocation) {
+        Optional<GameGroup> result = groupRepository.findById(gameGroupId);
+
+        if (result.isEmpty()) {
+            model.addAttribute("title","Invalid Game ID: " + gameGroupId);
         }   else {
-            model.addAttribute(gameGroup.get());
-            gameGroup.get().setGameGroupName(gameGroupName);
-            gameGroup.get().setGameGroupDescription(gameGroupDescription);
-            }
+            GameGroup gameGroup= result.get();
+            gameGroup.setGameGroupName(gameGroupName);
+            gameGroup.setGameGroupDescription(gameGroupDescription);
+            gameGroup.setGameGroupRules(gameGroupRules);
+            gameGroup.setGameGroupLocation(gameGroupLocation);
+            groupRepository.save(gameGroup);
+        }
         return "redirect:";
     }
 
