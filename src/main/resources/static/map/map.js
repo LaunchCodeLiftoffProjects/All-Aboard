@@ -5,10 +5,20 @@ fetch('map/example-map-data.json').then((response) => {
 });
 
 function generateMap(data) {
-    let mapIcons = [];
+    const mapIcons = [];
+
+    const iconStyle = new ol.style.Style({
+      image: new ol.style.Icon({
+        scale: 0.1,
+        anchor: [0.5, 512],
+        anchorXUnits: 'fraction',
+        anchorYUnits: 'pixels',
+        src: 'map/images/basic-pin.png',
+      }),
+    });
 
     for (let i = 0; i < data.length; i++) {
-        var iconFeature = new ol.Feature({
+        const iconFeature = new ol.Feature({
             geometry: new ol.geom.Point(ol.proj.fromLonLat(
                 data[i].coordinates
             )),
@@ -17,37 +27,27 @@ function generateMap(data) {
             openMembership: data[i].openMembership,
         });
 
-        var iconStyle = new ol.style.Style({
-          image: new ol.style.Icon({
-            scale: 0.1,
-            anchor: [0.5, 512],
-            anchorXUnits: 'fraction',
-            anchorYUnits: 'pixels',
-            src: 'map/images/basic-pin.png',
-          }),
-        });
-
         iconFeature.setStyle(iconStyle);
         mapIcons.push(iconFeature);
     }
 
-    var vectorSource = new ol.source.Vector({
+    const vectorSource = new ol.source.Vector({
       features: mapIcons,
     });
 
-    var vectorLayer = new ol.layer.Vector({
+    const vectorLayer = new ol.layer.Vector({
       source: vectorSource,
     });
 
-    let terrainLayerSource = new ol.source.Stamen({
+    const terrainLayerSource = new ol.source.Stamen({
          layer: 'terrain',
     });
 
-    let labelsLayerSource = new ol.source.Stamen({
+    const labelsLayerSource = new ol.source.Stamen({
         layer: 'terrain-labels',
     })
 
-    var map = new ol.Map({
+    const map = new ol.Map({
         target: 'map',
         layers: [
             new ol.layer.Tile({
@@ -65,9 +65,9 @@ function generateMap(data) {
         })
     });
 
-    var element = document.getElementById('popup');
+    const element = document.getElementById('popup');
 
-    var popup = new ol.Overlay({
+    const popup = new ol.Overlay({
       element: element,
       positioning: 'bottom-center',
       stopEvent: false,
@@ -77,13 +77,13 @@ function generateMap(data) {
 
     let lastHoveredFeature = null;
     map.on('pointermove', function (e) {
-      var feature = map.forEachFeatureAtPixel(e.pixel, function (feature) {
+      const feature = map.forEachFeatureAtPixel(e.pixel, function (feature) {
         return feature;
       });
 
       if (feature && lastHoveredFeature !== feature) {
         lastHoveredFeature = feature;
-        var coordinates = feature.getGeometry().getCoordinates();
+        const coordinates = feature.getGeometry().getCoordinates();
         popup.setPosition(coordinates);
         $(element).popover({
           placement: 'top',
@@ -99,8 +99,7 @@ function generateMap(data) {
            `,
         });
         $(element).popover('show');
-      } else if (feature) {
-      } else {
+      } else if (!feature) {
         lastHoveredFeature = null;
         $(element).popover('dispose');
       }
@@ -109,8 +108,8 @@ function generateMap(data) {
         $(element).popover('dispose');
         return;
       }
-      var pixel = map.getEventPixel(e.originalEvent);
-      var hit = map.hasFeatureAtPixel(pixel);
-//      map.getTarget().style.cursor = hit ? 'pointer' : '';
+      const pixel = map.getEventPixel(e.originalEvent);
+      const hit = map.hasFeatureAtPixel(pixel);
+      map.getTargetElement().style.cursor = hit ? 'pointer' : '';
     });
 }
