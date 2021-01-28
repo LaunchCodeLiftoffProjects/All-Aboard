@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" th:href="@{/style.css}"/>
+    <head th:replace="fragments :: head"></head>
 
-    <title>Register</title>
-</head>
 <body class="container body-content">
 
 <form method="post">

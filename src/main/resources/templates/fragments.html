@@ -2,24 +2,23 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:fragment="head">
     <meta charset="UTF-8"/>
-    <title>Coding Events</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" th:href="@{/resources/css/allaboard.css}">
+    <title>All Aboard</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" th:href="@{/css/allaboard..css}"/>
 </head>
+
 <body>
-
-
-<div class="side-nav">
-    <h1 th:text="${title}">All Aboard</h1>
-    <ul class="nav" style="float:right;">
-        <li class="side-nav"><a href="/profile">My Page</a></li>
-        <li class="side-nav"><a href="/logout">Log out</a></li>
-    </ul>
-    <ul class="nav">
-        <li class="nav-item"><a class="nav-link" href="/map">Map</a></li>
-        <li class="nav-item"><a class="nav-link" href="/groups">My Groups</a></li>
-    </ul>
-</div>
+    <nav class="side-nav" th:fragment="sidebar">
+        <h1>All Aboard</h1>
+        <ul class="nav" style="float:right;">
+            <li class="side-nav"><a class="nav-link" href="/profile">My Page</a></li>
+            <li class="side-nav"><a class="nav-link" href="/map">Map</a></li>
+            <li class="side-nav"><a class="nav-link" href="/groups">My Groups</a></li>
+        </ul>
+    </nav>
 </body>
+
 </html>

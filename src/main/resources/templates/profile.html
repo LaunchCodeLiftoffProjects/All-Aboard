@@ -1,41 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
-    <meta charset="UTF-8"/>
-    <title>All Aboard Profile Page</title>
+    <head th:replace="fragments :: head"></head>
+
 </head>
 <body>
 
+<nav th:replace="fragments :: sidebar"></nav>
 
 <div style="background-color: #DCDCDC; text-align: right; padding: 25px">
     <img style="height:250px" th:src="@{/resources/static/images/default_profile_pic.jpg}">
     <h1 class="card-title" style="color: #2F4F4F; font-size: 100px; text-align:center">Profile</h1>
 </div>
 
-<div class="row">
-    <div class="col-sm-6" style="width: 18rem; border: 1px solid rgba(0,0,0,.125); border-radius: .25rem;">
-        <div class="card">
-            <h2 class="card-header">Home</h2>
-            <div class="card-body">
-                <h5 class="card-title">Visit the home page</h5>
-                <a href="/index" class="btn btn-primary">Take Me Home</a>
+<div class="container">
+    <div class="card-columns">
+
+        <div class="col-sm-6" style="width: 18rem; border: 1px solid rgba(0,0,0,.125); border-radius: .25rem;">
+            <div class="card text-center">
+                <h2 class="card-header">Home</h2>
+                <div class="card-body">
+                    <p class="card-text">Visit the home page</p>
+                </div>
+                <div class="card-footer">
+                    <a href="/index" class="btn btn-primary">Take Me Home</a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-sm-6" style="width: 18rem; border: 1px solid rgba(0,0,0,.125); border-radius: .25rem;">
-        <div class="card">
-            <h2 class="card-header">Map</h2>
-            <div class="card-body">
-                <h5 class="card-title">Find a local group using our map feature!</h5>
-                <a href="/map" class="btn btn-primary">To the map!</a>
+
+        <div class="col-sm-6" style="width: 18rem; border: 1px solid rgba(0,0,0,.125); border-radius: .25rem;">
+            <div class="card text-center">
+                <h2 class="card-header">Map</h2>
+                <div class="card-body">
+                    <p class="card-text">Find a local group using our map feature!</p>
+                </div>
+                <div class="card-footer">
+                    <a href="/map" class="btn btn-primary">To the map!</a>
+                </div>
             </div>
         </div>
-    </div>
+
     <div class="col-sm-6" style="width: 18rem; border: 1px solid rgba(0,0,0,.125); border-radius: .25rem;">
-        <div class="card">
+        <div class="card text-center">
             <h2 class="card-header">My Groups</h2>
             <div class="card-body">
-                <h5 class="card-title">Here are the groups you are a member of:</h5>
+                <p class="card-text">Here are the groups you are a member of:</p>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item" th:each="group : ${groups}">
                             <a th:text="${group.name}"></a>
@@ -43,6 +52,8 @@
                     </ul>
             </div>
         </div>
+    </div>
+
     </div>
 </div>
 <!--        <li class="list-group-item"><a href="/messages">My Messages</a></li>-->
