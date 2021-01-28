@@ -1,13 +1,13 @@
 [
   {
     "name": "Mary's Group",
-    "coordinates": [25, 25],
-    "gametype": "chess",
+    "coordinates": [-90.291723, 38.636205],
+    "gametype": "Chess",
     "openMembership": true
   }, {
   "name": "Abby's Group",
-  "coordinates": [50, 50],
-  "gametype": "stratego",
+  "coordinates": [-90.347689, 38.634791],
+  "gametype": "Stratego",
   "openMembership": false
   }
 ]
