@@ -13,7 +13,7 @@
 <form method="post">
 
     <th:block th:each="gameGroup : ${groups}">
-        <div class="form-gameGroup">
+        <div class="form-group">
             <label>
                 <span th:text="${gameGroup.gameGroupName}"></span>
                 <input type="checkbox" name="gameGroupIds"  th:value="${gameGroup.gameGroupId}" class="form-control">
