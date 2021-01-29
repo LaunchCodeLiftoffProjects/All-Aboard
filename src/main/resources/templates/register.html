@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" th:href="@{/style.css}" />
+    <head th:replace="fragments :: head"></head>
 
-    <title>Register</title>
-</head>
 <body class="container body-content">
 
 <form method="post">
-    <div class="form-gameGroup">
+    <div class="form-group">
         <h1>Register</h1>
         <p>Please fill in this form to create an account</p>
         <label>Username
@@ -19,48 +14,48 @@
         </label>
         <p class="error" th:errors="${registerFormDTO.username}"></p>
     </div>
-    <div class="form-gameGroup">
+    <div class="form-group">
         <label>Password
             <input class="form-control" th:field="${registerFormDTO.password}" type="password" th:required="required"/>
         </label>
         <p class="error" th:errors="${registerFormDTO.password}"></p>
     </div>
-    <div class="form-gameGroup">
+    <div class="form-group">
         <label>Verify Password
             <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password" th:required="required"/>
         </label>
     </div>
-    <div class="form-gameGroup">
+    <div class="form-group">
         <label>Email
             <input class="form-control" th:field="${registerFormDTO.email}" th:required="required"/>
         </label>
         <p class="error" th:errors="${registerFormDTO.email}"></p>
     </div>
-    <div class="form-gameGroup">
+    <div class="form-group">
         <label>Address Line One
             <input class="form-control" th:field="${registerFormDTO.addressLineOne}" th:required="required"/>
         </label>
         <p class="error" th:errors="${registerFormDTO.addressLineOne}"></p>
     </div>
-    <div class="form-gameGroup">
+    <div class="form-group">
         <label>Address Line Two
             <input class="form-control" th:field="${registerFormDTO.addressLineTwo}"/>
         </label>
         <p class="error" th:errors="${registerFormDTO.addressLineTwo}"></p>
     </div>
-    <div class="form-gameGroup">
+    <div class="form-group">
         <label>City
             <input class="form-control" th:field="${registerFormDTO.city}" th:required="required"/>
         </label>
         <p class="error" th:errors="${registerFormDTO.city}"></p>
     </div>
-    <div class="form-gameGroup">
+    <div class="form-group">
         <label>State
             <input class="form-control" th:field="${registerFormDTO.state}" th:required="required"/>
         </label>
         <p class="error" th:errors="${registerFormDTO.state}"></p>
     </div>
-    <div class="form-gameGroup">
+    <div class="form-group">
         <label>Zip Code
             <input class="form-control" th:field="${registerFormDTO.zipCode}" th:required="required"/>
         </label>

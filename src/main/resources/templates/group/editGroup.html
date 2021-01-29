@@ -16,7 +16,7 @@
 
 <th:block >
     <form method="post" th:action="@{/group/edit}">
-        <div class="form-gameGroup">
+        <div class="form-group">
             <h1>Edit Group</h1>
             <p>Please fill in areas you wish to edit</p>
         </div>
@@ -42,12 +42,7 @@
             </label>
             <p class="error" th:errors="${gameGroup.gameGroupLocation}"></p>
         </div>
-        <div>
-<!--            <form action="upload.php" method="post">-->
-<!--                Select new image to upload:-->
-<!--                <input type="file" name="file" id="file"/>-->
-<!--            </form>-->
-        </div>
+
         <input type="hidden" th:value="${gameGroup.id}" name="gameGroupId" />
         <div class="form-group">
             <input type="submit" value="Edit Group" class="btn btn-success">
