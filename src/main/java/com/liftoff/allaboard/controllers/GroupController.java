@@ -90,7 +90,7 @@ public class GroupController {
 
     @PostMapping("edit")
     public String processGameGroupEditForm(Model model, int gameGroupId, String gameGroupName, String gameGroupDescription, String gameGroupRules,
-                                           String gameGroupLocation) {
+                                           String gameGroupAddress, int gameGroupZipCode) {
         Optional<GameGroup> result = groupRepository.findById(gameGroupId);
 
         if (result.isEmpty()) {
@@ -100,7 +100,8 @@ public class GroupController {
             gameGroup.setGameGroupName(gameGroupName);
             gameGroup.setGameGroupDescription(gameGroupDescription);
             gameGroup.setGameGroupRules(gameGroupRules);
-            gameGroup.setGameGroupLocation(gameGroupLocation);
+            gameGroup.setGameGroupAddress(gameGroupAddress);
+            gameGroup.setGameGroupZipCode(gameGroupZipCode);
             groupRepository.save(gameGroup);
         }
         return "redirect:";
