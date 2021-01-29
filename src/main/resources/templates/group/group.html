@@ -10,6 +10,7 @@
 </head>
 <body class="container body-content">
 
+
 <table class="table table-striped">
     <thead>
     <tr>
@@ -21,6 +22,10 @@
     </tr>
     </thead>
 
+    <td>
+        <input type="submit" class="btn btn-primary" value="Create Group" />
+    </td>
+
     <tr  th:each="gameGroup : ${groups}">
         <td th:text="${gameGroup.gameGroupName}"></td>
         <td th:text="${gameGroup.gameGroupDescription}"></td>
@@ -30,7 +35,12 @@
         <a th:href="@{'/group/edit/' + ${gameGroup.id}}">Edit Group</a>
 
     </td>
+
+        <td>
+            <a th:href="@{'/group/delete' + ${gameGroup.id}}">Delete Group</a>
+        </td>
     </tr>
+
 </table>
 
 </body>

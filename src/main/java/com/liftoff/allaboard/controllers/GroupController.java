@@ -60,7 +60,7 @@ public class GroupController {
     public String displayDeleteGameGroupForm(Model model) {
         model.addAttribute("title", "Delete Group");
         model.addAttribute("groups", groupRepository.findAll());
-        return "group/delete";
+        return "group/deleteGroup";
     }
 
     @PostMapping("delete")
@@ -70,7 +70,7 @@ public class GroupController {
                 groupRepository.deleteById(id);
             }
         }
-        return "redirect:";
+        return "redirect:/group";
 
     }
 
