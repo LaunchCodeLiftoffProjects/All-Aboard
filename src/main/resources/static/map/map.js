@@ -13,6 +13,8 @@ function generateMap(data) {
                 data[i].coordinates
             )),
             name: data[i].name,
+            gametype: data[i].gametype,
+            openMembership: data[i].openMembership,
         });
 
         var iconStyle = new ol.style.Style({
@@ -37,24 +39,29 @@ function generateMap(data) {
       source: vectorSource,
     });
 
+    let terrainLayerSource = new ol.source.Stamen({
+         layer: 'terrain',
+    });
+
+    let labelsLayerSource = new ol.source.Stamen({
+        layer: 'terrain-labels',
+    })
+
     var map = new ol.Map({
         target: 'map',
         layers: [
             new ol.layer.Tile({
-                source: new ol.source.Stamen({
-                    layer: 'watercolor',
-                }),
+                source: terrainLayerSource,
             }),
             new ol.layer.Tile({
-                source: new ol.source.Stamen({
-                    layer: 'terrain-labels',
-                }),
+                source: labelsLayerSource,
             }),
             vectorLayer
         ],
         view: new ol.View({
-            center: ol.proj.fromLonLat([37.41, 8.82]),
-            zoom: 4
+            center: ol.proj.fromLonLat([-90.1994, 38.6270]),
+            zoom: 11.5,
+            resolutions: terrainLayerSource.getTileGrid().getResolutions()
         })
     });
 
@@ -68,33 +75,42 @@ function generateMap(data) {
     });
     map.addOverlay(popup);
 
-
-    map.on('click', function (evt) {
-      var feature = map.forEachFeatureAtPixel(evt.pixel, function (feature) {
+    let lastHoveredFeature = null;
+    map.on('pointermove', function (e) {
+      var feature = map.forEachFeatureAtPixel(e.pixel, function (feature) {
         return feature;
       });
-      if (feature) {
-        $(element).popover('dispose');
+
+      if (feature && lastHoveredFeature !== feature) {
+        lastHoveredFeature = feature;
         var coordinates = feature.getGeometry().getCoordinates();
         popup.setPosition(coordinates);
         $(element).popover({
           placement: 'top',
           html: true,
-          content: feature.get('name'),
+          content: `
+            <h3 class='group-name'>${feature.get('name')}</h3>
+            <div class='game-type'>Playing <strong>${feature.get('gametype')}</strong></div>
+            <div class='open-membership'>${
+                feature.get('openMembership') ?
+                '<span class="membership-true">Taking new members</span>' :
+                '<span class="membership-false">Not taking new members</span>'
+            }<div>
+           `,
         });
         $(element).popover('show');
+      } else if (feature) {
       } else {
+        lastHoveredFeature = null;
         $(element).popover('dispose');
       }
-    });
 
-    map.on('pointermove', function (e) {
       if (e.dragging) {
         $(element).popover('dispose');
         return;
       }
       var pixel = map.getEventPixel(e.originalEvent);
       var hit = map.hasFeatureAtPixel(pixel);
-      map.getTarget().style.cursor = hit ? 'pointer' : '';
+//      map.getTarget().style.cursor = hit ? 'pointer' : '';
     });
 }
