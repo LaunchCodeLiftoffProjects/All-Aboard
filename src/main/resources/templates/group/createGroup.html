@@ -11,41 +11,36 @@
 <body class="container body-content">
 
 <form method="post">
-    <div class="form-gameGroup">
+    <div class="form-group">
         <h1>Create Group</h1>
         <p>Please fill in this form to create a gameGroup</p>
     </div>
 
-    <div class="form-gameGroup">
+    <div class="form-group">
         <label>Group Name
             <input class="form-control" type="text" th:field="${gameGroup.gameGroupName}" th:required="required"/>
         </label>
         <p class="error" th:errors="${gameGroup.gameGroupName}"></p>
     </div>
-    <div class="form-gameGroup">
+    <div class="form-group">
         <label>Group Description
             <input class="form-control" type="text" th:field="${gameGroup.gameGroupDescription}"  th:required="required"/>
         </label>
         <p class="error" th:errors="${gameGroup.gameGroupDescription}"></p>
     </div>
-    <div class="form-gameGroup">
+    <div class="form-group">
         <label>Group Rules
             <input class="form-control" type="text" th:field="${gameGroup.gameGroupRules}" th:required="required"/>
         </label>
         <p class="error" th:errors="${gameGroup.gameGroupRules}"></p>
     </div>
-    <div class="form-gameGroup">
+    <div class="form-group">
         <label>Group Location
             <input class="form-control" type="text" th:field="${gameGroup.gameGroupLocation}" th:required="required"/>
         </label>
         <p class="error" th:errors="${gameGroup.gameGroupLocation}"></p>
     </div>
-    <div>
-<!--        <form action="upload.php" method="post">-->
-<!--        Select image to upload:-->
-<!--        <input type="file" name="file" id="file"/>-->
-<!--    </form>-->
-    </div>
+   
 
     <input type="submit" class="btn btn-primary" value="Create Group" />
 </form>
