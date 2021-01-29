@@ -84,7 +84,7 @@ public class RegistrationController {
         return "redirect:";
     }
 
-    @GetMapping("/profile/{Id}")
+    @GetMapping("/profile/{userId}")
     public String displayProfilePage(Model model, @PathVariable int userId) {
 
         Optional<User> result = userRepository.findById(userId);
