@@ -1,50 +1,37 @@
 package com.liftoff.allaboard.models;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.persistence.Entity;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.Size;
+import javax.persistence.*;
 
 @Entity
-public class User extends AbstractEntity {
-    public User(){}
+@Table(name = "user")
+public class User  extends AbstractEntity{
+
+    @Id
+    @Column(name = "user_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
 
-    @NotNull
-    private String username;
-
-    @NotNull
-    private String pw_hash;
-
-    @NotBlank(message = "This field cannot be left blank!")
-    @Size(max = 50)
+    private final String username;
+    private final String pw_hash;
     private String email;
-
-    @NotBlank(message = "This field cannot be left blank!")
-    @Size(max = 50)
     private String addressLineOne;
-
     private String addressLineTwo;
-
-    @NotBlank(message = "This field cannot be left blank!")
-    @Size(max = 50)
     private String city;
-
-    @NotBlank(message = "This field cannot be left blank!")
-    @Size(max = 2)
     private String state;
-
-    @NotNull
-    @Positive
     private Integer zipCode;
+    private String role;
+    private boolean enabled;
+    private String userRole;
 
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-    public User(String username, String password, String email, String addressLineOne, String addressLineTwo, String city, String state, Integer zipCode) {
+
+    public User(String username, String password, String email, String addressLineOne, String addressLineTwo, String city, String state, Integer zipCode, String role, String userRole) {
         this.username = username;
         this.pw_hash = encoder.encode(password);
         this.email = email;
@@ -53,11 +40,15 @@ public class User extends AbstractEntity {
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
+        this.role = role;
+        this.userRole = userRole;
     }
+
+    public User findByUserName(User username) { return username; }
 
 
     public String getUsername() {
-        return username;
+        return this.username;
     }
 
     public String getEmail() {
@@ -108,19 +99,58 @@ public class User extends AbstractEntity {
         this.zipCode = zipCode;
     }
 
+    public void setRole(String role) {this.role = role;}
+
+    public String getUserRole(){return userRole;}
+
+    public void setUserRole(String userRole) {this.userRole = userRole;}
+
+
+
+
 
 
 
     @Override
     public String toString() {
-        return username;
+        return this.username;
     }
 
 
     public boolean isMatchingPassword(String password) {
-        return encoder.matches(password, pw_hash);
+        return encoder.matches(password, this.pw_hash);
     }
 
 
+    @Override
+    public String getRole() {
+        return null;
+    }
+
+    @Override
+    public String getPassword() {
+        return null;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
 }
 

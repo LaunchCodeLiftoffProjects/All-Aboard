@@ -18,6 +18,16 @@ import java.util.Optional;
 
 @Controller
 public class RegistrationController {
+    String username;
+    String pw_hash;
+    String email;
+    String addressLineOne;
+    String addressLineTwo;
+    String city;
+    String state;
+    Integer zipCode;
+    String role;
+    String userRole;
 
     @Autowired
     UserRepository userRepository;
@@ -30,7 +40,7 @@ public class RegistrationController {
             return null;
         }
 
-        Optional<User> user = userRepository.findById(userId);
+        Optional<User> user = Optional.ofNullable(userRepository.findById(userId));
 
         if (user.isEmpty()) {
             return null;
@@ -60,7 +70,7 @@ public class RegistrationController {
             return "register";
         }
 
-        User existingUser = userRepository.findByUsername(registerFormDTO.getUsername());
+        User existingUser = userRepository.getUserByUsername(registerFormDTO.getUsername());
 
         if (existingUser != null) {
             errors.rejectValue("username", "username.alreadyexists", "A user with that username already exists");
@@ -76,7 +86,9 @@ public class RegistrationController {
             return "register";
         }
 
-        User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword(), registerFormDTO.getEmail(), registerFormDTO.getAddressLineOne(), registerFormDTO.getAddressLineTwo(), registerFormDTO.getCity(), registerFormDTO.getState(), registerFormDTO.getZipCode());
+
+
+        User newUser = new User(username, pw_hash, email, addressLineOne, addressLineTwo, city, state, zipCode, role, userRole);
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 

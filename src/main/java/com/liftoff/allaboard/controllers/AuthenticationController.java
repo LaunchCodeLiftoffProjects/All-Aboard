@@ -31,7 +31,7 @@ public class AuthenticationController {
             return null;
         }
 
-        Optional<User> user = userRepository.findById(userId);
+        Optional<User> user = Optional.ofNullable(userRepository.findById(userId));
 
         if (user.isEmpty()) {
             return null;
@@ -61,7 +61,7 @@ public class AuthenticationController {
             return "login";
         }
 
-        User theUser = userRepository.findByUsername(loginFormDTO.getUsername());
+        User theUser = userRepository.getUserByUsername(loginFormDTO.getUsername());
 
         if (theUser == null) {
             errors.rejectValue("username", "user.invalid", "The given username does not exist");

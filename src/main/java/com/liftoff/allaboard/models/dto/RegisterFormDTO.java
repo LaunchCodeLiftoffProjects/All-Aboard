@@ -1,5 +1,7 @@
 package com.liftoff.allaboard.models.dto;
 
+import org.springframework.context.annotation.Role;
+
 import javax.validation.constraints.*;
 
 public class RegisterFormDTO extends LoginFormDTO {
@@ -33,10 +35,13 @@ public class RegisterFormDTO extends LoginFormDTO {
     @Positive(message = "This field can not be a negative number")
     private Integer zipCode;
 
+    private String userRole;
+    private String role;
+
 
     public String getVerifyPassword() {
-            return verifyPassword;
-        }
+        return verifyPassword;
+    }
 
     public void setVerifyPassword(String verifyPassword) {
         this.verifyPassword = verifyPassword;
@@ -89,4 +94,8 @@ public class RegisterFormDTO extends LoginFormDTO {
     public void setZipCode(Integer zipCode) {
         this.zipCode = zipCode;
     }
+
+    public String getRole() {return role;}
+
+    public void setRole(String role) {this.role = role;}
 }
