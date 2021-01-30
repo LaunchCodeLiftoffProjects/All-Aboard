@@ -1,59 +1,142 @@
     html, body {
-    margin: 0;
-    height: 100%;
+        margin: 0;
+        height: 100%;
     }
 
     .control {
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+        margin: 6px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .control-label {
-    margin-bottom: 7px;
+         margin-bottom: 2px;
+         margin: 0 auto;
+    }
+
+    #search {
+        outline: none;
+        border-width: 1px;
+        border-radius: 20px;
+        height: 27px;
+        padding-left: 15px;
+        padding-right: 5px;
+        border-style: solid;
+    }
+
+    #game-select {
+        height: 27px;
+        border-radius: 20px;
+        padding-left: 15px;
+    }
+
+    #game-select:focus {
+        outline: none;
+    }
+
+    #distance-select {
+        height: 27px;
+        border-radius: 20px;
+        padding-left: 15px;
+        width: 100px;
+    }
+
+    #distance-select:focus {
+        outline: none;
+    }
+
+    .control-submit {
+        height: 27px;
+        border-radius: 20px;
+        width: 100px;
+        border-style: solid;
+        margin: 6px;
+        background-color: #FBF0FF;
+        border-width: 1px;
+    }
+
+    .control-submit:hover {
+        background-color: #DFFFAE;
+    }
+
+    .control-submit:focus {
+        outline: none;
     }
 
     .mapGrid {
-    height: 100%;
-    display: grid;
-    grid-gap: 2px;
-    grid-template-rows: auto 2fr 1fr;
-    grid-template-columns: auto 1fr;
+        height: 100%;
+        display: grid;
+        grid-template-rows: auto 2fr 1fr;
+        grid-template-columns: auto 1fr;
     }
 
     .controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    grid-column-start: 1;
-    grid-column-end: 3;
-    background-color: #f7faf1;
-    padding: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 1;
+        grid-column-end: 3;
+        background-color: #f7faf1;
+        padding: 1px;
+        font-size: 10pt;
+        border-bottom: rgb(118, 118, 118) 1px solid;
     }
 
     .results {
-    grid-row-start: 2;
-    grid-row-end: 4;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    background-color: #efeff9;
-    width: 350px;
-    font-size: 25px;
-    text-align: center;
+        grid-row-start: 2;
+        grid-row-end: 4;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        width: 350px;
+        font-size: 25px;
+        text-align: center;
+        overflow-y: auto;
+        background-color: #d4e4ff;
+        border-right: rgb(118, 118, 118) 1px solid;
     }
 
     .map {
-    grid-row-start: 2;
-    grid-row-end: 4;
-    grid-column-start: 2;
-    grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 4;
+        grid-column-start: 2;
+        grid-column-end: 3;
+    }
+
+    .result-info {
+        margin: 15px;
+        border-style: groove;
+        border-radius: 25px;
+        padding: 20px;
+        text-align: left;
+        background-color: white;
+        box-shadow: 3px 3px 5px 1px #3d5173;
+    }
+
+    .selected-result {
+        background-color: #fdffdb;
+    }
+
+    .group-name {
+        font-size: 1rem;
+    }
+
+    .group-name-panel {
+        font-size: 14pt;
+    }
+
+    .game-type-panel {
+        font-size: 10pt;
+    }
+
+    .open-membership-panel {
+        font-size: 10pt;
     }
 
     .membership-false {
-    color: #ed3535;
+        color: #ed3535;
     }
 
