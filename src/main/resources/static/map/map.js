@@ -1,37 +1,84 @@
-fetch('map/example-map-data.json').then((response) => {
-    response.json().then((data) => {
-        generateMap(data);
-    });
-});
+const resultsSection = document.getElementById("results");
+const mapIcons = [];
+let vectorSource;
+let view;
 
-function generateMap(data) {
-    const mapIcons = [];
-
-    const iconStyle = new ol.style.Style({
-      image: new ol.style.Icon({
+const iconStyle = new ol.style.Style({
+    image: new ol.style.Icon({
         scale: 0.1,
         anchor: [0.5, 512],
         anchorXUnits: 'fraction',
         anchorYUnits: 'pixels',
         src: 'map/images/basic-pin.png',
-      }),
+    }),
+});
+const iconStyleHighlighted = new ol.style.Style({
+    image: new ol.style.Icon({
+        scale: 0.1,
+        anchor: [0.5, 512],
+        anchorXUnits: 'fraction',
+        anchorYUnits: 'pixels',
+        src: 'map/images/basic-pin-alt.png',
+    }),
+});
+const popupElm = document.getElementById('popup')
+const popup = new ol.Overlay({
+    element: popupElm,
+    positioning: 'bottom-center',
+    stopEvent: false,
+    offset: [0, -50],
+});
+
+fetch('map/example-map-data.json').then((response) => {
+    response.json().then(mapDataFetchAction);
+});
+
+
+function mapDataFetchAction(data) {
+    for (let i = 0; i < data.length; i++) {
+        const gameGroup = data[i];
+        generateResult(gameGroup);
+        generateMapIcon(gameGroup);
+    }
+    $('.result-info').click(resultOnClick);
+    $('.result-info').hover(
+        resultOnMouseOver,
+        resultOnMouseOut
+    );
+    generateMap();
+}
+
+function generateResult(gameGroup) {
+    resultsSection.innerHTML += `
+        <div class='result-info' id='result-${gameGroup.id}'>
+            <h3 class='group-name-panel'>${gameGroup.name}</h3>
+            <div class='game-type-panel'>Playing <strong>${gameGroup.gametype}</strong></div>
+            <div class='open-membership-panel'>${
+                gameGroup.openMembership ?
+                '<span class="membership-true">Taking new members</span>' :
+                '<span class="membership-false">Not taking new members</span>'
+            }</div>
+        </div>
+    `;
+}
+
+function generateMapIcon(gameGroup) {
+    const iconFeature = new ol.Feature({
+        geometry: new ol.geom.Point(ol.proj.fromLonLat(
+            gameGroup.coordinates
+        )),
+        name: gameGroup.name,
+        gametype: gameGroup.gametype,
+        openMembership: gameGroup.openMembership,
+        id: gameGroup.id,
     });
 
-    for (let i = 0; i < data.length; i++) {
-        const iconFeature = new ol.Feature({
-            geometry: new ol.geom.Point(ol.proj.fromLonLat(
-                data[i].coordinates
-            )),
-            name: data[i].name,
-            gametype: data[i].gametype,
-            openMembership: data[i].openMembership,
-        });
+    iconFeature.setStyle(iconStyle);
+    mapIcons.push(iconFeature);
+}
 
-        iconFeature.setStyle(iconStyle);
-        mapIcons.push(iconFeature);
-    }
-
-    const vectorSource = new ol.source.Vector({
+function generateMap() {
+    vectorSource = new ol.source.Vector({
       features: mapIcons,
     });
 
@@ -47,6 +94,12 @@ function generateMap(data) {
         layer: 'terrain-labels',
     })
 
+    view = new ol.View({
+        center: ol.proj.fromLonLat([-90.1994, 38.6270]),
+        zoom: 11.5,
+        resolutions: terrainLayerSource.getTileGrid().getResolutions()
+    });
+
     const map = new ol.Map({
         target: 'map',
         layers: [
@@ -58,58 +111,99 @@ function generateMap(data) {
             }),
             vectorLayer
         ],
-        view: new ol.View({
-            center: ol.proj.fromLonLat([-90.1994, 38.6270]),
-            zoom: 11.5,
-            resolutions: terrainLayerSource.getTileGrid().getResolutions()
-        })
+        view: view
     });
 
-    const element = document.getElementById('popup');
-
-    const popup = new ol.Overlay({
-      element: element,
-      positioning: 'bottom-center',
-      stopEvent: false,
-      offset: [0, -50],
-    });
     map.addOverlay(popup);
 
     let lastHoveredFeature = null;
     map.on('pointermove', function (e) {
-      const feature = map.forEachFeatureAtPixel(e.pixel, function (feature) {
+      const hoveredFeature = map.forEachFeatureAtPixel(e.pixel, function (feature) {
         return feature;
       });
 
-      if (feature && lastHoveredFeature !== feature) {
-        lastHoveredFeature = feature;
-        const coordinates = feature.getGeometry().getCoordinates();
-        popup.setPosition(coordinates);
-        $(element).popover({
-          placement: 'top',
-          html: true,
-          content: `
-            <h3 class='group-name'>${feature.get('name')}</h3>
-            <div class='game-type'>Playing <strong>${feature.get('gametype')}</strong></div>
-            <div class='open-membership'>${
-                feature.get('openMembership') ?
-                '<span class="membership-true">Taking new members</span>' :
-                '<span class="membership-false">Not taking new members</span>'
-            }<div>
-           `,
-        });
-        $(element).popover('show');
-      } else if (!feature) {
+      vectorSource.forEachFeature((feature) => {
+        if (hoveredFeature !== feature) {
+          feature.setStyle(iconStyle);
+        }
+      });
+
+      if (hoveredFeature && lastHoveredFeature !== hoveredFeature) {
+        const selectedResult = document.getElementById(`result-${hoveredFeature.get('id')}`);
+        selectedResult.classList.add(`selected-result`);
+        lastHoveredFeature = hoveredFeature;
+        hoveredFeature.setStyle(iconStyleHighlighted);
+        showPinPopup(hoveredFeature);
+      } else if (!hoveredFeature) {
         lastHoveredFeature = null;
-        $(element).popover('dispose');
+        const resultElms = document.querySelectorAll(`.result-info`).forEach((resultElm) => {
+           resultElm.classList.remove(`selected-result`);
+        });
+        hidePinPopup();
       }
 
       if (e.dragging) {
-        $(element).popover('dispose');
+        hidePinPopup();
         return;
       }
       const pixel = map.getEventPixel(e.originalEvent);
       const hit = map.hasFeatureAtPixel(pixel);
       map.getTargetElement().style.cursor = hit ? 'pointer' : '';
     });
+}
+
+function showPinPopup(feature) {
+    const coordinates = feature.getGeometry().getCoordinates();
+    popup.setPosition(coordinates);
+    $(popupElm).popover({
+      placement: 'top',
+      html: true,
+      content: `
+        <h3 class='group-name'>${feature.get('name')}</h3>
+        <div class='game-type'>Playing <strong>${feature.get('gametype')}</strong></div>
+        <div class='open-membership'>${
+           feature.get('openMembership') ?
+           '<span class="membership-true">Taking new members</span>' :
+           '<span class="membership-false">Not taking new members</span>'
+        }<div>
+       `,
+    });
+    $(popupElm).popover('show');
+}
+
+function hidePinPopup(feature) {
+    $(popupElm).popover('dispose');
+}
+
+function resultOnClick() {
+    const resultId = this.id;
+    vectorSource.forEachFeature((feature) => {
+        if(resultId === `result-${feature.get('id')}`) {
+            view.setCenter(feature.getGeometry().getCoordinates());
+            view.setZoom(11.5)
+        };
+    })
+
+}
+
+function resultOnMouseOver() {
+    const resultId = this.id;
+    vectorSource.forEachFeature((feature) => {
+        feature.setStyle(iconStyle);
+        if(resultId === `result-${feature.get('id')}`) {
+            feature.setStyle(iconStyleHighlighted);
+        };
+    })
+
+    console.log("hover thingy test :)");
+}
+
+function resultOnMouseOut() {
+    vectorSource.forEachFeature((feature) => {
+        feature.setStyle(iconStyle);
+    })
+}
+
+function centerOnPin() {
+
 }

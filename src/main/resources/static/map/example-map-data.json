@@ -1,13 +1,45 @@
 [
   {
-    "name": "Mary's Group",
-    "coordinates": [-90.291723, 38.636205],
-    "gametype": "Chess",
-    "openMembership": true
+  "name": "Mary's Group",
+  "coordinates": [-90.291723, 38.636205],
+  "gametype": "Chess",
+  "openMembership": true,
+  "id": 0
   }, {
   "name": "Abby's Group",
   "coordinates": [-90.347689, 38.634791],
   "gametype": "Stratego",
-  "openMembership": false
+  "openMembership": false,
+  "id": 1
+  }, {
+  "name": "GameNite Game Group",
+  "coordinates": [-90.35185881737743, 38.56530983483351],
+  "gametype": "Twilight Struggle",
+  "openMembership": false,
+  "id": 2
+  }, {
+  "name": "MoKaBe's D&D",
+  "coordinates": [-90.24272665980637, 38.60258805649026],
+  "gametype": "D&D",
+  "openMembership": false,
+  "id": 3
+  }, {
+  "name": "Assumption Church Go",
+  "coordinates": [-90.36059611552304, 38.501303009939015],
+  "gametype": "Go",
+  "openMembership": false,
+  "id": 4
+  }, {
+  "name": "Left Bank Books Gamers",
+  "coordinates": [-90.26124513272141, 38.6485044833591],
+  "gametype": "Evolution: Climate",
+  "openMembership": false,
+  "id": 5
+  }, {
+  "name": "Cherokee Wargamers",
+  "coordinates": [-90.23953145970329, 38.59499933137343],
+  "gametype": "Warhammer 40k",
+  "openMembership": false,
+  "id": 6
   }
 ]
