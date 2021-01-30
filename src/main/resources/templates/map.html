@@ -14,14 +14,15 @@
     <div class="mapGrid">
         <form id="controls" class="controls">
             <div class="control">
-                <label class="control-label" for="search">Search by location</label>
-                <input type="search" id="search" name="search"
+                <label class="control-label" for="search"></label>
+                <input type="search" id="search" name="search" placeholder="search location"
                        aria-label="Search by location">
             </div>
 
             <div class="control">
-                <label class="control-label" for="game-select">Filter by game</label>
+                <label class="control-label" for="game-select"></label>
                 <select name="games-select" id="game-select">
+                    <option value = "" disabled selected hidden>select game</option>
                     <option value="dungeons-and-dragons">D&D</option>
                     <option value="vampire-the-masquerade">Vampire: The Masquerade</option>
                     <option value="settlers-of-catan">Settlers Of Catan</option>
@@ -30,8 +31,9 @@
             </div>
 
             <div class="control">
-                <label class="control-label" for="distance-select">Filter by distance</label>
+                <label class="control-label" for="distance-select"></label>
                 <select name="distance-select" id="distance-select">
+                    <option value = "" disabled selected hidden>distance</option>
                     <option value="five-miles">5 miles</option>
                     <option value="ten-miles">10 miles</option>
                     <option value="fifteen-miles">15 miles</option>
