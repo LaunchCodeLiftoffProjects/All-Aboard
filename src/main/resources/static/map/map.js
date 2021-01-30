@@ -51,8 +51,8 @@ function mapDataFetchAction(data) {
 function generateResult(gameGroup) {
     resultsSection.innerHTML += `
         <div class='result-info' id='result-${gameGroup.id}'>
-            <h3 class='group-name-panel'>${gameGroup.name}</h3>
-            <div class='game-type-panel'>Playing <strong>${gameGroup.gametype}</strong></div>
+            <h3 class='group-name-panel'>${gameGroup.gameGroupName}</h3>
+            <div class='game-type-panel'>Playing <strong>${gameGroup.gameType}</strong></div>
             <div class='open-membership-panel'>${
                 gameGroup.openMembership ?
                 '<span class="membership-true">Taking new members</span>' :
@@ -65,11 +65,12 @@ function generateResult(gameGroup) {
 function generateMapIcon(gameGroup) {
     const iconFeature = new ol.Feature({
         geometry: new ol.geom.Point(ol.proj.fromLonLat(
-            gameGroup.coordinates
+            gameGroup.gameGroupLocation
         )),
-        name: gameGroup.name,
-        gametype: gameGroup.gametype,
+        gameGroupName: gameGroup.gameGroupName,
+        gameType: gameGroup.gameType,
         openMembership: gameGroup.openMembership,
+        gameGroupDescription: gameGroup.gameGroupDescription,
         id: gameGroup.id,
     });
 
@@ -159,8 +160,8 @@ function showPinPopup(feature) {
       placement: 'top',
       html: true,
       content: `
-        <h3 class='group-name'>${feature.get('name')}</h3>
-        <div class='game-type'>Playing <strong>${feature.get('gametype')}</strong></div>
+        <h3 class='group-name'>${feature.get('gameGroupName')}</h3>
+        <div class='game-type'>Playing <strong>${feature.get('gameType')}</strong></div>
         <div class='open-membership'>${
            feature.get('openMembership') ?
            '<span class="membership-true">Taking new members</span>' :
@@ -194,8 +195,6 @@ function resultOnMouseOver() {
             feature.setStyle(iconStyleHighlighted);
         };
     })
-
-    console.log("hover thingy test :)");
 }
 
 function resultOnMouseOut() {
@@ -204,6 +203,18 @@ function resultOnMouseOut() {
     })
 }
 
-function centerOnPin() {
+function searchAddress() {
+    let input = encodeURIComponent($('#search').val());
+    const geocodeURL = `https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=${input}&benchmark=4&vintage=Current_Current&format=json&callback=?`;
 
+    $.getJSON(geocodeURL, function(response) {
+        const coordinates = response.result.addressMatches[0].coordinates;
+        view.setCenter(ol.proj.fromLonLat([coordinates.x, coordinates.y]));
+        view.setZoom(13.5);
+    })
 }
+
+$('#controls').submit(function(event) {
+    event.preventDefault();
+    searchAddress();
+});

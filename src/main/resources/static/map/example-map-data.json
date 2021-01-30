@@ -1,45 +1,79 @@
 [
   {
-  "name": "Mary's Group",
-  "coordinates": [-90.291723, 38.636205],
-  "gametype": "Chess",
-  "openMembership": true,
-  "id": 0
-  }, {
-  "name": "Abby's Group",
-  "coordinates": [-90.347689, 38.634791],
-  "gametype": "Stratego",
-  "openMembership": false,
-  "id": 1
-  }, {
-  "name": "GameNite Game Group",
-  "coordinates": [-90.35185881737743, 38.56530983483351],
-  "gametype": "Twilight Struggle",
-  "openMembership": false,
-  "id": 2
-  }, {
-  "name": "MoKaBe's D&D",
-  "coordinates": [-90.24272665980637, 38.60258805649026],
-  "gametype": "D&D",
-  "openMembership": false,
-  "id": 3
-  }, {
-  "name": "Assumption Church Go",
-  "coordinates": [-90.36059611552304, 38.501303009939015],
-  "gametype": "Go",
-  "openMembership": false,
-  "id": 4
-  }, {
-  "name": "Left Bank Books Gamers",
-  "coordinates": [-90.26124513272141, 38.6485044833591],
-  "gametype": "Evolution: Climate",
-  "openMembership": false,
-  "id": 5
-  }, {
-  "name": "Cherokee Wargamers",
-  "coordinates": [-90.23953145970329, 38.59499933137343],
-  "gametype": "Warhammer 40k",
-  "openMembership": false,
-  "id": 6
+    "gameGroupName": "Mary's Group",
+    "gameGroupLocation": [
+      -90.291723,
+      38.636205
+    ],
+    "gameType": "Chess",
+    "openMembership": true,
+    "gameGroupDescription": "We play chess :)",
+    "id": 0
+  },
+  {
+    "gameGroupName": "Abby's Group",
+    "gameGroupLocation": [
+      -90.347689,
+      38.634791
+    ],
+    "gameType": "Stratego",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 1
+  },
+  {
+    "gameGroupName": "GameNite Game Group",
+    "gameGroupLocation": [
+      -90.35185881737743,
+      38.56530983483351
+    ],
+    "gameType": "Twilight Struggle",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 2
+  },
+  {
+    "gameGroupName": "MoKaBe's D&D",
+    "gameGroupLocation": [
+      -90.24272665980637,
+      38.60258805649026
+    ],
+    "gameType": "D&D",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 3
+  },
+  {
+    "gameGroupName": "Assumption Church Go",
+    "gameGroupLocation": [
+      -90.36059611552304,
+      38.501303009939015
+    ],
+    "gameType": "Go",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 4
+  },
+  {
+    "gameGroupName": "Left Bank Books Gamers",
+    "gameGroupLocation": [
+      -90.26124513272141,
+      38.6485044833591
+    ],
+    "gameType": "Evolution: Climate",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 5
+  },
+  {
+    "gameGroupName": "Cherokee Wargamers",
+    "gameGroupLocation": [
+      -90.23953145970329,
+      38.59499933137343
+    ],
+    "gameType": "Warhammer 40k",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 6
   }
 ]
