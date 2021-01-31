@@ -23,6 +23,7 @@ public class User  extends AbstractEntity{
     private String city;
     private String state;
     private Integer zipCode;
+    private String role;
     private boolean enabled;
     private String userRole;
 
@@ -30,7 +31,7 @@ public class User  extends AbstractEntity{
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
 
-    public User(String username, String password, String email, String addressLineOne, String addressLineTwo, String city, String state, Integer zipCode, boolean enabled, String userRole) {
+    public User(String username, String password, String email, String addressLineOne, String addressLineTwo, String city, String state, Integer zipCode, String role, String userRole) {
         this.username = username;
         this.pw_hash = encoder.encode(password);
         this.email = email;
@@ -39,7 +40,7 @@ public class User  extends AbstractEntity{
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
-        this.enabled = enabled;
+        this.role = role;
         this.userRole = userRole;
     }
 
@@ -98,6 +99,7 @@ public class User  extends AbstractEntity{
         this.zipCode = zipCode;
     }
 
+    public void setRole(String role) {this.role = role;}
 
     public String getUserRole(){return userRole;}
 
