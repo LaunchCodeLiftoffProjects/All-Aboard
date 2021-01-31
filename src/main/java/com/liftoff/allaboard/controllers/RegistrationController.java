@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -42,6 +39,14 @@ public class RegistrationController {
 
     private static void setUserInSession(HttpSession session, User user) {
         session.setAttribute(userSessionKey, user.getId());
+    }
+
+    @GetMapping("/index")
+    public String index(Model model) {
+
+        model.addAttribute("title", "All Aboard");
+
+        return "index";
     }
 
     @GetMapping("/register")
@@ -93,8 +98,7 @@ public class RegistrationController {
             model.addAttribute("user", result.get());
             return "profile";
         } else {
-            return "map";
-
+            return "index";
         }
     }
 

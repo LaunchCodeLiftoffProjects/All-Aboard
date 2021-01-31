@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
-<head>
-    <head th:replace="fragments :: head"></head>
 
-</head>
+<head th:replace="fragments :: head"></head>
+
 <body>
 
-<nav th:replace="fragments :: sidebar"></nav>
-
-<div style="background-color: #DCDCDC; text-align: right; padding: 25px">
-    <img style="height:250px" th:src="@{/images/default_profile_pic.jpg}">
-    <h1 class="card-title" style="color: #2F4F4F; font-size: 100px; text-align:center">Profile</h1>
+<div class="profile-head">
+    <img class="profile-pic"  th:src="@{/images/default_profile_pic.jpg}">
+    <div class="card-img-overlay">
+        <h1 class="card-title">Profile</h1>
+    </div>
 </div>
 
-<div class="container">
+<div class="container" style="padding: 30px">
     <div class="card-columns">
-
-        <div class="col-sm-6" style="width: 18rem; border: 1px solid rgba(0,0,0,.125); border-radius: .25rem;">
+        <div class="w-75">
             <div class="card text-center">
                 <h2 class="card-header">Home</h2>
                 <div class="card-body">
@@ -28,7 +26,7 @@
             </div>
         </div>
 
-        <div class="col-sm-6" style="width: 18rem; border: 1px solid rgba(0,0,0,.125); border-radius: .25rem;">
+        <div class="w-75">
             <div class="card text-center">
                 <h2 class="card-header">Map</h2>
                 <div class="card-body">
@@ -40,7 +38,7 @@
             </div>
         </div>
 
-    <div class="col-sm-6" style="width: 18rem; border: 1px solid rgba(0,0,0,.125); border-radius: .25rem;">
+    <div class="w-75">
         <div class="card text-center">
             <h2 class="card-header">My Groups</h2>
             <div class="card-body">
@@ -56,16 +54,7 @@
 
     </div>
 </div>
-<!--        <li class="list-group-item"><a href="/messages">My Messages</a></li>-->
-<!--        <li class="list-group-item"><a href="/groups">My Group</a></li>-->
-<!--    </ul>-->
 
-<!--<h3>Click "Choose File" button to upload a file:</h3>-->
-<!--<form action="/action_page.php">-->
-<!--    <label for="myfile">Select a file:</label>-->
-<!--    <input type="file" id="myfile" name="myfile" accept="image/*"><br><br>-->
-<!--    <input type="submit">-->
-<!--</form>-->
 
 <button class="btn btn-link btn-sm" href="/login">Log Out</button>
 

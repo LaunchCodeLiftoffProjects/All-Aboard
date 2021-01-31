@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<head th:replace="fragments :: head"></head>
 
-    <link rel="stylesheet" th:href="@{/style.css}" />
-
-    <title>Group</title>
-</head>
 <body class="container body-content">
+<nav th:replace="fragments :: navbar"></nav>
 
 <table class="table table-striped">
     <thead>
