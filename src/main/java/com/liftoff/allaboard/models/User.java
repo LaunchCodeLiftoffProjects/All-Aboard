@@ -9,14 +9,14 @@ import javax.persistence.*;
 @Table(name = "user")
 public class User  extends AbstractEntity{
 
-    @Id
-    @Column(name = "user_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
+//    @Column(name = "id")
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
 
 
-    private final String username;
-    private final String pw_hash;
+    private String username;
+    private String pw_hash;
     private String email;
     private String addressLineOne;
     private String addressLineTwo;
@@ -118,7 +118,7 @@ public class User  extends AbstractEntity{
 
 
     public boolean isMatchingPassword(String password) {
-        return encoder.matches(password, this.pw_hash);
+        return encoder.matches(password, pw_hash);
     }
 
 
@@ -129,7 +129,7 @@ public class User  extends AbstractEntity{
 
     @Override
     public String getPassword() {
-        return null;
+        return this.pw_hash;
     }
 
     @Override

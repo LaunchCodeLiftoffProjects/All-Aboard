@@ -4,15 +4,14 @@ import org.springframework.context.annotation.Role;
 
 import java.util.Collection;
 import java.util.Objects;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 
 @MappedSuperclass
 public abstract class AbstractEntity {
     public AbstractEntity(){}
     @Id
-    @GeneratedValue
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     public AbstractEntity(int id) {
@@ -54,4 +53,5 @@ public abstract class AbstractEntity {
 
     public abstract boolean isEnabled();
 
+//    public abstract boolean isMatchingPassword(String password);
 }

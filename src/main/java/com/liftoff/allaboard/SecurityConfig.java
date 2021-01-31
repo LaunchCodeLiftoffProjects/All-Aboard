@@ -14,18 +14,18 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 
 @Configuration
 @EnableWebSecurity
-@ComponentScan({"com.delivery.request"})
+@ComponentScan
 @SpringBootApplication
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-//    @Qualifier("userDetailsService")
     UserDetailsService userDetailsService;
 
-    @Autowired
+    @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }

@@ -6,7 +6,7 @@ import javax.validation.constraints.*;
 
 public class RegisterFormDTO extends LoginFormDTO {
 
-    private String verifyPassword;
+//    private String verifyPassword;
 
     @NotNull
     @NotBlank
@@ -37,6 +37,7 @@ public class RegisterFormDTO extends LoginFormDTO {
 
     private String userRole;
     private String role;
+    private String verifyPassword;
 
 
     public String getVerifyPassword() {

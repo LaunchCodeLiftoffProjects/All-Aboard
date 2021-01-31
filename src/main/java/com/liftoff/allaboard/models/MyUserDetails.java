@@ -4,17 +4,21 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-@Component
-public class MyUserDetails implements UserDetails {
+@ComponentScan
+public abstract class MyUserDetails implements UserDetails {
+    public MyUserDetails(){}
 
     private User user;
 
+
     public MyUserDetails(User user) {
+        super();
         this.user = user;
     }
 
@@ -24,10 +28,10 @@ public class MyUserDetails implements UserDetails {
         return Arrays.asList(authority);
     }
 
-    @Override
-    public String getPassword() {
-        return user.getPassword();
-    }
+//    @Override
+//    public String getPassword() {
+//        return user.getPassword();
+//    }
 
     @Override
     public String getUsername() {
