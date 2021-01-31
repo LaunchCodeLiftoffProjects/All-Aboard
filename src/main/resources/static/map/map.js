@@ -1,9 +1,15 @@
 const resultsSection = document.getElementById("results");
-const mapIcons = [];
-let vectorSource;
+let jsonData;
+let filteredData;
 let view;
+let centerPinFeature;
+let centerPinSource;
+let centerPinLayer;
+let gameGroupFeatures = [];
+let gamePinSource;
+let gamePinLayer;
 
-const iconStyle = new ol.style.Style({
+const gamePinStyle = new ol.style.Style({
     image: new ol.style.Icon({
         scale: 0.1,
         anchor: [0.5, 512],
@@ -12,7 +18,7 @@ const iconStyle = new ol.style.Style({
         src: 'map/images/basic-pin.png',
     }),
 });
-const iconStyleHighlighted = new ol.style.Style({
+const gamePinStyleHighlighted = new ol.style.Style({
     image: new ol.style.Icon({
         scale: 0.1,
         anchor: [0.5, 512],
@@ -21,6 +27,16 @@ const iconStyleHighlighted = new ol.style.Style({
         src: 'map/images/basic-pin-alt.png',
     }),
 });
+const centerPinStyle = new ol.style.Style({
+    image: new ol.style.Icon({
+        scale: 0.1,
+        anchor: [0.5, 512],
+        anchorXUnits: 'fraction',
+        anchorYUnits: 'pixels',
+        src: 'map/images/center-pin.png',
+    }),
+});
+
 const popupElm = document.getElementById('popup')
 const popup = new ol.Overlay({
     element: popupElm,
@@ -35,17 +51,24 @@ fetch('map/example-map-data.json').then((response) => {
 
 
 function mapDataFetchAction(data) {
-    for (let i = 0; i < data.length; i++) {
-        const gameGroup = data[i];
+    jsonData = data;
+    filteredData = [...jsonData];
+    for (let i = 0; i < filteredData.length; i++) {
+        const gameGroup = filteredData[i];
         generateResult(gameGroup);
         generateMapIcon(gameGroup);
     }
+    bindEventsToResults();
+    generateMap();
+}
+
+function bindEventsToResults() {
+    $('.result-info').unbind();
     $('.result-info').click(resultOnClick);
     $('.result-info').hover(
         resultOnMouseOver,
         resultOnMouseOut
     );
-    generateMap();
 }
 
 function generateResult(gameGroup) {
@@ -74,19 +97,11 @@ function generateMapIcon(gameGroup) {
         id: gameGroup.id,
     });
 
-    iconFeature.setStyle(iconStyle);
-    mapIcons.push(iconFeature);
+    iconFeature.setStyle(gamePinStyle);
+    gameGroupFeatures.push(iconFeature);
 }
 
 function generateMap() {
-    vectorSource = new ol.source.Vector({
-      features: mapIcons,
-    });
-
-    const vectorLayer = new ol.layer.Vector({
-      source: vectorSource,
-    });
-
     const terrainLayerSource = new ol.source.Stamen({
          layer: 'terrain',
     });
@@ -96,9 +111,30 @@ function generateMap() {
     })
 
     view = new ol.View({
-        center: ol.proj.fromLonLat([-90.1994, 38.6270]),
+        center: ol.proj.fromLonLat([-90.3246, 38.6126]),
         zoom: 11.5,
         resolutions: terrainLayerSource.getTileGrid().getResolutions()
+    });
+
+    centerPinFeature = new ol.Feature({
+        geometry: new ol.geom.Point(view.getCenter())
+    });
+    centerPinFeature.setStyle(new ol.style.Style(null));
+
+    centerPinSource = new ol.source.Vector({
+        features: [centerPinFeature],
+    });
+
+    centerPinLayer = new ol.layer.Vector({
+        source: centerPinSource,
+    });
+
+    gamePinSource = new ol.source.Vector({
+      features: gameGroupFeatures,
+    });
+
+    gamePinLayer = new ol.layer.Vector({
+      source: gamePinSource,
     });
 
     const map = new ol.Map({
@@ -110,7 +146,8 @@ function generateMap() {
             new ol.layer.Tile({
                 source: labelsLayerSource,
             }),
-            vectorLayer
+            gamePinLayer,
+            centerPinLayer
         ],
         view: view
     });
@@ -119,21 +156,24 @@ function generateMap() {
 
     let lastHoveredFeature = null;
     map.on('pointermove', function (e) {
-      const hoveredFeature = map.forEachFeatureAtPixel(e.pixel, function (feature) {
-        return feature;
+      let hoveredFeature = map.forEachFeatureAtPixel(e.pixel, function (feature, layer) {
+        if (layer === gamePinLayer) {
+            return feature;
+        }
       });
 
-      vectorSource.forEachFeature((feature) => {
+      gamePinSource.forEachFeature((feature) => {
         if (hoveredFeature !== feature) {
-          feature.setStyle(iconStyle);
+          feature.setStyle(gamePinStyle);
         }
       });
 
       if (hoveredFeature && lastHoveredFeature !== hoveredFeature) {
+        hoveredFeature = moveFeatureUp(hoveredFeature);
         const selectedResult = document.getElementById(`result-${hoveredFeature.get('id')}`);
         selectedResult.classList.add(`selected-result`);
         lastHoveredFeature = hoveredFeature;
-        hoveredFeature.setStyle(iconStyleHighlighted);
+        hoveredFeature.setStyle(gamePinStyleHighlighted);
         showPinPopup(hoveredFeature);
       } else if (!hoveredFeature) {
         lastHoveredFeature = null;
@@ -148,8 +188,9 @@ function generateMap() {
         return;
       }
       const pixel = map.getEventPixel(e.originalEvent);
-      const hit = map.hasFeatureAtPixel(pixel);
-      map.getTargetElement().style.cursor = hit ? 'pointer' : '';
+
+      map.hasFeatureAtPixel(pixel);
+      map.getTargetElement().style.cursor = hoveredFeature ? 'pointer' : '';
     });
 }
 
@@ -178,10 +219,10 @@ function hidePinPopup(feature) {
 
 function resultOnClick() {
     const resultId = this.id;
-    vectorSource.forEachFeature((feature) => {
+    gamePinSource.forEachFeature((feature) => {
         if(resultId === `result-${feature.get('id')}`) {
             view.setCenter(feature.getGeometry().getCoordinates());
-            view.setZoom(11.5)
+            view.setZoom(12.5);
         };
     })
 
@@ -189,17 +230,18 @@ function resultOnClick() {
 
 function resultOnMouseOver() {
     const resultId = this.id;
-    vectorSource.forEachFeature((feature) => {
-        feature.setStyle(iconStyle);
+    gamePinSource.forEachFeature((feature) => {
+        feature.setStyle(gamePinStyle);
         if(resultId === `result-${feature.get('id')}`) {
-            feature.setStyle(iconStyleHighlighted);
+            feature.setStyle(gamePinStyleHighlighted);
+            moveFeatureUp(feature);
         };
     })
 }
 
 function resultOnMouseOut() {
-    vectorSource.forEachFeature((feature) => {
-        feature.setStyle(iconStyle);
+    gamePinSource.forEachFeature((feature) => {
+        feature.setStyle(gamePinStyle);
     })
 }
 
@@ -210,11 +252,96 @@ function searchAddress() {
     $.getJSON(geocodeURL, function(response) {
         const coordinates = response.result.addressMatches[0].coordinates;
         view.setCenter(ol.proj.fromLonLat([coordinates.x, coordinates.y]));
-        view.setZoom(13.5);
+        centerPinFeature.set(
+            'geometry',
+            new ol.geom.Point(view.getCenter())
+        );
+        centerPinFeature.setStyle(centerPinStyle);
     })
 }
 
 $('#controls').submit(function(event) {
     event.preventDefault();
-    searchAddress();
+    setResultParameters();
 });
+
+function setResultParameters() {
+    gameGroupFeatures = [];
+    filteredData = [...jsonData];
+    $('.results').empty();
+
+    if($('#search').val() !== '') {
+        searchAddress();
+    }
+
+    const distanceSelect = Number($('#distance-select').val());
+    const viewCenter = ol.proj.toLonLat(view.getCenter());
+    if (distanceSelect !== 0) {
+        filterGroupsByDistance(viewCenter, distanceSelect);
+    }
+
+    filteredData.forEach((dataItem) => {
+        generateResult(dataItem);
+        generateMapIcon(dataItem);
+    });
+
+    bindEventsToResults();
+    gamePinSource = new ol.source.Vector({
+        features: gameGroupFeatures,
+    });
+    gamePinLayer.setSource(gamePinSource);
+
+    switch(distanceSelect) {
+        case 5:
+            view.setZoom(12.5);
+            break;
+        case 10:
+            view.setZoom(11.75);
+            break;
+        case 15:
+            view.setZoom(11);
+            break;
+        case 20:
+            view.setZoom(10.25);
+            break;
+        case 30:
+            view.setZoom(9.75);
+            break;
+        default:
+            view.setZoom(12.5);
+            break;
+    }
+}
+
+function filterGroupsByDistance(center, distance) {
+    for(let i = filteredData.length - 1; i >= 0; i--) {
+        const meterToMiles = 0.00062137119224;
+        const featureDistance = new ol.geom.LineString([
+            ol.proj.fromLonLat(center),
+            ol.proj.fromLonLat(filteredData[i].gameGroupLocation)
+        ]).getLength() * meterToMiles;
+
+        if(featureDistance > distance) {
+            filteredData.splice(i, 1);
+        }
+    }
+}
+
+function moveFeatureUp(feature) {
+    const featureClone = feature.clone();
+    try {
+        gamePinLayer.getSource().removeFeature(feature);
+    } catch (e) {
+        //occasionally fails and throws an error but still functions
+        //fine as this just removes unnecessary features
+    }
+    gamePinLayer.getSource().addFeature(featureClone);
+    return featureClone;
+}
+
+$('#search').keypress(function(event) {
+    if(event.Key === 'Enter') {
+        setResultParameters();
+    }
+});
+

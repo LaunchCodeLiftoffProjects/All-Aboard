@@ -1,3 +1,7 @@
+   * {
+        z-index: 1;
+   }
+
     html, body {
         margin: 0;
         height: 100%;
@@ -104,6 +108,11 @@
         grid-row-end: 4;
         grid-column-start: 2;
         grid-column-end: 3;
+        z-index: 0;
+    }
+
+    .popover {
+        z-index: 0;
     }
 
     .result-info {
@@ -114,6 +123,10 @@
         text-align: left;
         background-color: white;
         box-shadow: 3px 3px 5px 1px #3d5173;
+    }
+
+    .result-info:hover {
+        background-color: #fdffdb;
     }
 
     .selected-result {
@@ -139,4 +152,8 @@
     .membership-false {
         color: #ed3535;
     }
+
+
+
+
 

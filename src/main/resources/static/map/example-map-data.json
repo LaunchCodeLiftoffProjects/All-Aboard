@@ -75,5 +75,269 @@
     "openMembership": false,
     "gameGroupDescription": "We play chess :)",
     "id": 6
+  },
+  {
+    "gameGroupName": "Example 8",
+    "gameGroupLocation": [
+      -90.397875,
+      38.675861
+    ],
+    "gameType": "Warhammer 40k",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 7
+  },
+  {
+    "gameGroupName": "Example 9",
+    "gameGroupLocation": [
+      -90.376765,
+      38.620197
+    ],
+    "gameType": "Warhammer 40k",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 8
+  },
+  {
+    "gameGroupName": "Example 10",
+    "gameGroupLocation": [
+      -90.284401,
+      38.666212
+    ],
+    "gameType": "Warhammer 40k",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 9
+  },
+  {
+    "gameGroupName": "Example 11",
+    "gameGroupLocation": [
+      -90.233814,
+      38.693549
+    ],
+    "gameType": "Warhammer 40k",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 10
+  },
+  {
+    "gameGroupName": "Example 12",
+    "gameGroupLocation": [
+      -90.299939,
+      38.555468
+    ],
+    "gameType": "Warhammer 40k",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 11
+  },
+  {
+    "gameGroupName": "Example 13",
+    "gameGroupLocation": [
+      -90.469373,
+      38.626634
+    ],
+    "gameType": "Warhammer 40k",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 12
+  },
+  {
+    "gameGroupName": "Example 14",
+    "gameGroupLocation": [
+      -90.377656,
+      38.685510
+    ],
+    "gameType": "Warhammer 40k",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 13
+  },
+  {
+    "gameGroupName": "Example 15",
+    "gameGroupLocation": [
+      -90.201154,
+      38.656132
+    ],
+    "gameType": "Warhammer 40k",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 14
+  },
+  {
+    "gameGroupName": "Example 16",
+    "gameGroupLocation": [
+      -90.314749,
+      38.617192
+    ],
+    "gameType": "Warhammer 40k",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 15
+  },
+  {
+    "gameGroupName": "Example 17",
+    "gameGroupLocation": [
+      -90.286445,
+      38.585103
+    ],
+    "gameType": "Warhammer 40k",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 16
+  },
+  {
+    "gameGroupName": "Example 18",
+    "gameGroupLocation": [
+      -90.354484,
+      38.594495
+    ],
+    "gameType": "Warhammer 40k",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 17
+  },
+  {
+    "gameGroupName": "Example 19",
+    "gameGroupLocation": [
+      -90.190780,
+      38.632856
+    ],
+    "gameType": "Warhammer 40k",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 18
+  },
+  {
+    "gameGroupName": "Example 20",
+    "gameGroupLocation": [
+      -90.233637,
+      38.660823
+    ],
+    "gameType": "Warhammer 40k",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 19
+  },
+  {
+    "gameGroupName": "Example 21",
+    "gameGroupLocation": [
+      -90.284377,
+      38.536672
+    ],
+    "gameType": "Warhammer 40k",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 20
+  },
+  {
+    "gameGroupName": "Example 22",
+    "gameGroupLocation": [
+      -90.317635,
+      38.543762
+    ],
+    "gameType": "Warhammer 40k",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 21
+  },
+  {
+    "gameGroupName": "Example 23",
+    "gameGroupLocation": [
+      -90.565461,
+      38.659885
+    ],
+    "gameType": "Warhammer 40k",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 22
+  },
+  {
+    "gameGroupName": "Example 24",
+    "gameGroupLocation": [
+      -90.384865,
+      38.416154
+    ],
+    "gameType": "Warhammer 40k",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 23
+  },
+  {
+    "gameGroupName": "Example 25",
+    "gameGroupLocation": [
+      -90.317452,
+      38.738660
+    ],
+    "gameType": "Warhammer 40k",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 24
+  },
+  {
+    "gameGroupName": "Example 26",
+    "gameGroupLocation": [
+      -92.172933,
+      38.579284
+    ],
+    "gameType": "Warhammer 40k",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 25
+  },
+  {
+    "gameGroupName": "Example 27",
+    "gameGroupLocation": [
+      -87.599991,
+      41.769494
+    ],
+    "gameType": "Warhammer 40k",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 26
+  },
+  {
+    "gameGroupName": "Example 28",
+    "gameGroupLocation": [
+      -73.954593,
+      40.796508
+    ],
+    "gameType": "Warhammer 40k",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 27
+  },
+  {
+    "gameGroupName": "Example 29",
+    "gameGroupLocation": [
+      -90.005200,
+      38.744659
+    ],
+    "gameType": "Warhammer 40k",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 28
+  },
+  {
+    "gameGroupName": "Example 30",
+    "gameGroupLocation": [
+      -90.622644,
+      38.500678
+    ],
+    "gameType": "Warhammer 40k",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 29
+  },
+  {
+    "gameGroupName": "Example 31",
+    "gameGroupLocation": [
+      -90.159851,
+      38.885902
+    ],
+    "gameType": "Warhammer 40k",
+    "openMembership": false,
+    "gameGroupDescription": "We play chess :)",
+    "id": 30
   }
 ]

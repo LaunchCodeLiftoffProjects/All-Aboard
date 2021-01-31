@@ -3,6 +3,7 @@ package com.liftoff.allaboard.models;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,20 +25,23 @@ public class GameGroup extends AbstractEntity{
     private String gameGroupRules;
 
     @Size(max = 150)
-    private String gameGroupLocation;
+    private String gameGroupAddress;
+
+    @NotNull(message = "This field cannot be left blank!")
+    private int gameGroupZipCode;
 
     private int gameGroupMemberCount;
 
 //    @AssertTrue(message = "You are the Admin of this group")
 //    private boolean role;
 
-    public GameGroup(@NotBlank(message = "This field cannot be left blank!") @Size(max = 150) String gameGroupName,
-                     @Size(max = 350) String gameGroupDescription, @Size(max = 350) String gameGroupRules,
-                     @Size(max = 150) String gameGroupLocation, int gameGroupMemberCount) {
+    public GameGroup(String gameGroupName, String gameGroupDescription, String gameGroupRules, String gameGroupAddress,
+                     int gameGroupZipCode, int gameGroupMemberCount) {
         this.gameGroupName = gameGroupName;
         this.gameGroupDescription = gameGroupDescription;
         this.gameGroupRules = gameGroupRules;
-        this.gameGroupLocation = gameGroupLocation;
+        this.gameGroupAddress = gameGroupAddress;
+        this.gameGroupZipCode = gameGroupZipCode;
         this.gameGroupMemberCount = gameGroupMemberCount;
 //        this.role = role;
     }
@@ -69,13 +73,17 @@ public class GameGroup extends AbstractEntity{
         this.gameGroupRules = gameGroupRules;
     }
 
-    public String getGameGroupLocation() {
-        return gameGroupLocation;
+    public String getGameGroupAddress() {
+        return gameGroupAddress;
     }
 
-    public void setGameGroupLocation(String gameGroupLocation) {
-        this.gameGroupLocation = gameGroupLocation;
+    public int getGameGroupZipCode() {
+        return gameGroupZipCode;
     }
+
+    public void setGameGroupAddress(String gameGroupAddress) { this.gameGroupAddress = gameGroupAddress; }
+
+    public void setGameGroupZipCode(int gameGroupZipCode) { this.gameGroupZipCode = gameGroupZipCode; }
 
     public int getGameGroupMemberCount() {
         return gameGroupMemberCount;
