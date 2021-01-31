@@ -1,6 +1,8 @@
 package com.liftoff.allaboard.controllers;
 
+import com.liftoff.allaboard.data.GroupRepository;
 import com.liftoff.allaboard.models.Game;
+import com.liftoff.allaboard.models.GameGroup;
 import com.liftoff.allaboard.models.Message;
 import com.liftoff.allaboard.models.User;
 import com.liftoff.allaboard.models.data.MessageRepository;
@@ -25,6 +27,10 @@ public class MessageController {
 
     @Autowired
     private MessageRepository messageRepository;
+
+    @Autowired
+    private GroupRepository groupRepository;
+
 
 
     @GetMapping("addFromGame")
@@ -86,9 +92,12 @@ public class MessageController {
     public String listGames(Model model) {
 
         List<Game> l = new ArrayList<Game>();
-        l.add(new Game(1, "uno"));
-        l.add(new Game(2, "monopoly"));
-        l.add(new Game(3, "risk"));
+
+
+        Iterable<GameGroup> allGames = groupRepository.findAll();
+        for (GameGroup g: allGames) {
+            l.add(new Game(g.getId(), g.getGameGroupName()));
+        }
 
         Iterable<Game> games = l;
 
