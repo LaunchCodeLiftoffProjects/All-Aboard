@@ -10,9 +10,6 @@
 </head>
 <body class="container body-content">
 
-<th:block th:unless="${groups}">
-    <p>The gameGroup you are trying to edit does not exist.</p>
-</th:block>
 
 <th:block >
     <form method="post" th:action="@{/group/edit}">

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Group Members</title>
+</head>
+<body>
+
+<p th:unless="${groupmember} and ${groupSize.size()}">no members!</p>
+
+<div class="container body-content">
+    <h2>Group Members</h2>
+    <ul>
+        <li th:each="groupMember : ${groupMembers}">
+            <a th:href="@{'/skills/view/' + ${skill.id}}" th:text="${skill.name}"></a>
+        </li>
+    </ul>
+    <a th:href="@{'/skills/add'}">Add Skills</a>
+
+</div>
+</body>
+</html>

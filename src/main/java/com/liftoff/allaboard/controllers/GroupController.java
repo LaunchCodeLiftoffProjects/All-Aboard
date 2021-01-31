@@ -136,4 +136,16 @@ public class GroupController {
         return "redirect:add-group";
     }
 
+//    @GetMapping("add-member")
+//    public String processAddMember(@RequestParam Integer userId, Model model) {
+//        Optional<User> result = userRepository.findById(userId);
+//        User user = result.get();
+//        model.addAttribute("title", "Add Group to: " + user.getUsername());
+//        model.addAttribute("gameGroups", groupRepository.findAll());
+//        UserGroupDTO userGroupDTO = new UserGroupDTO();
+//        userGroupDTO.setUser(user);
+//        model.addAttribute("userGroup", userGroupDTO);
+//        return "user/add-group.html";
+//    }
+
 }
