@@ -10,5 +10,4 @@ public class AllAboardApplication {
         SpringApplication.run(AllAboardApplication.class, args);
     }
 
-
 }
