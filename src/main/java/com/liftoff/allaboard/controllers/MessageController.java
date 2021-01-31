@@ -58,11 +58,6 @@ public class MessageController {
     }
 
 
-    @GetMapping("add")
-    public String addMessage(Model model) {
-        model.addAttribute(new Message());
-        return "messages/add";
-    }
 
     @PostMapping("add")
     public String processAddMessageForm(@ModelAttribute @Valid Message message,
