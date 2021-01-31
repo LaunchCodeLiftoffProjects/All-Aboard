@@ -10,9 +10,7 @@
 </head>
 <body class="container body-content">
 
-<th:block th:unless="${groups}">
-    <p>The gameGroup you are trying to edit does not exist.</p>
-</th:block>
+
 <th:block >
     <form method="post" th:action="@{/group/edit}">
         <div class="form-group">
@@ -36,12 +34,17 @@
             <p class="error" th:errors="${gameGroup.gameGroupRules}"></p>
         </div>
         <div class="form-group">
-            <label>Group Location
-                <input class="form-control" type="text" th:field="${gameGroup.gameGroupLocation}" th:required="required"/>
+            <label>Group Address
+                <input class="form-control" type="text" th:field="${gameGroup.gameGroupAddress}" th:required="required"/>
             </label>
-            <p class="error" th:errors="${gameGroup.gameGroupLocation}"></p>
+            <p class="error" th:errors="${gameGroup.gameGroupAddress}"></p>
         </div>
-
+        <div class="form-group">
+            <label>Group Zip Code
+                <input class="form-control" type="text" th:field="${gameGroup.gameGroupZipCode}" th:required="required"/>
+            </label>
+            <p class="error" th:errors="${gameGroup.gameGroupZipCode}"></p>
+        </div>
         <input type="hidden" th:value="${gameGroup.id}" name="gameGroupId" />
         <div class="form-group">
             <input type="submit" value="Edit Group" class="btn btn-success">

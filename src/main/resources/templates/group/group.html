@@ -10,14 +10,19 @@
 </head>
 <body class="container body-content">
 
+<form method="post" action="/group/create">
+<input type="submit" class="btn btn-primary" value="Create Group" />
+
 <table class="table table-striped">
     <thead>
     <tr>
         <th>Group Name</th>
         <th>Group Description</th>
         <th>Group Rules</th>
-        <th>Group Location</th>
-        <th>Edit</th>
+        <th>Group Address</th>
+        <th>Group Zip Code</th>
+        <th>Edit Group</th>
+        <th>Delete Group</th>
     </tr>
     </thead>
 
@@ -25,13 +30,19 @@
         <td th:text="${gameGroup.gameGroupName}"></td>
         <td th:text="${gameGroup.gameGroupDescription}"></td>
         <td th:text="${gameGroup.gameGroupRules}"></td>
-        <td th:text="${gameGroup.gameGroupLocation}"></td>
+        <td th:text="${gameGroup.gameGroupAddress}"></td>
+        <td th:text="${gameGroup.gameGroupZipCode}"></td>
     <td>
         <a th:href="@{'/group/edit/' + ${gameGroup.id}}">Edit Group</a>
 
     </td>
-    </tr>
-</table>
 
+        <td>
+            <a th:href="@{'/group/delete'}">Delete Group</a>
+        </td>
+    </tr>
+
+</table>
+</form>
 </body>
 </html>
