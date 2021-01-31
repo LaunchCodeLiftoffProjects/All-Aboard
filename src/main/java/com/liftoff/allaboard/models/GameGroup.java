@@ -14,9 +14,6 @@ public class GameGroup extends AbstractEntity{
     @ManyToMany(mappedBy = "gameGroup")
     private final List<User> user = new ArrayList<>();
 
-    @ManyToMany
-    private final List<GroupMember> groupMembers = new ArrayList<>();
-
     @NotBlank(message = "This field cannot be left blank!")
     @Size(max = 150)
     private String gameGroupName;
@@ -50,10 +47,6 @@ public class GameGroup extends AbstractEntity{
     }
 
     public GameGroup(){
-    }
-
-    public List<GroupMember> getGroupMembers() {
-        return groupMembers;
     }
 
     public String getGameGroupName() {
@@ -102,10 +95,6 @@ public class GameGroup extends AbstractEntity{
 
     public List<User> getUser() {
         return user;
-    }
-
-    public void addmember(GroupMember groupMember) {
-        this.groupMembers.add(groupMember);
     }
 
     //    public boolean isRole() {
