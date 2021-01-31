@@ -27,11 +27,9 @@ public class User  extends AbstractEntity{
     private boolean enabled;
     private String userRole;
 
-
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-
-    public User(String username, String password, String email, String addressLineOne, String addressLineTwo, String city, String state, Integer zipCode, String role, String userRole) {
+    public User(String username, String password, String email, String addressLineOne, String addressLineTwo, String city, String state, Integer zipCode, boolean enabled, String userRole) {
         this.username = username;
         this.pw_hash = encoder.encode(password);
         this.email = email;
@@ -40,117 +38,58 @@ public class User  extends AbstractEntity{
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
-        this.role = role;
+        this.enabled = enabled;
         this.userRole = userRole;
     }
 
     public User findByUserName(User username) { return username; }
 
+    public String getUsername() { return this.username; }
 
-    public String getUsername() {
-        return this.username;
-    }
+    public String getEmail() { return email; }
 
-    public String getEmail() {
-        return email;
-    }
+    public void setEmail(String email) { this.email = email; }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public String getAddressLineOne() { return addressLineOne; }
 
-    public String getAddressLineOne() {
-        return addressLineOne;
-    }
+    public void setAddressLineOne(String addressLineOne) { this.addressLineOne = addressLineOne; }
 
-    public void setAddressLineOne(String addressLineOne) {
-        this.addressLineOne = addressLineOne;
-    }
+    public String getAddressLineTwo() { return addressLineTwo; }
 
-    public String getAddressLineTwo() {
-        return addressLineTwo;
-    }
+    public void setAddressLineTwo(String addressLineTwo) { this.addressLineTwo = addressLineTwo; }
 
-    public void setAddressLineTwo(String addressLineTwo) {
-        this.addressLineTwo = addressLineTwo;
-    }
+    public String getCity() { return city; }
 
-    public String getCity() {
-        return city;
-    }
+    public void setCity(String city) { this.city = city; }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
+    public String getState() { return state; }
 
-    public String getState() {
-        return state;
-    }
+    public void setState(String state) { this.state = state; }
 
-    public void setState(String state) {
-        this.state = state;
-    }
+    public Integer getZipCode() { return zipCode; }
 
-    public Integer getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(Integer zipCode) {
-        this.zipCode = zipCode;
-    }
-
-    public void setRole(String role) {this.role = role;}
+    public void setZipCode(Integer zipCode) { this.zipCode = zipCode; }
 
     public String getUserRole(){return userRole;}
 
-    public void setUserRole(String userRole) {this.userRole = userRole;}
+    @Override
+    public String toString() { return this.username; }
 
-
-
-
-
-
+    public boolean isMatchingPassword(String password) { return encoder.matches(password, pw_hash); }
 
     @Override
-    public String toString() {
-        return this.username;
-    }
-
-
-    public boolean isMatchingPassword(String password) {
-        return encoder.matches(password, pw_hash);
-    }
-
+    public String getPassword() { return this.pw_hash; }
 
     @Override
-    public String getRole() {
-        return null;
-    }
+    public boolean isAccountNonExpired() { return false; }
 
     @Override
-    public String getPassword() {
-        return this.pw_hash;
-    }
+    public boolean isAccountNonLocked() { return false; }
 
     @Override
-    public boolean isAccountNonExpired() {
-        return false;
-    }
-
+    public boolean isCredentialsNonExpired() { return false; }
 
     @Override
-    public boolean isAccountNonLocked() {
-        return false;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return false;
-    }
+    public boolean isEnabled() { return false; }
 }
 

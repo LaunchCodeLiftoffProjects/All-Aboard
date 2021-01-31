@@ -19,7 +19,7 @@ public abstract class AbstractEntity {
     }
 
     public int getId() {
-        return this.id;
+        return id;
     }
 
     public boolean equals(Object o) {
@@ -27,18 +27,15 @@ public abstract class AbstractEntity {
             return true;
         } else if (o != null && this.getClass() == o.getClass()) {
             AbstractEntity that = (AbstractEntity)o;
-            return this.id == that.id;
+            return id == that.id;
         } else {
             return false;
         }
     }
 
-    public int hashCode() {
-        return Objects.hash(new Object[]{this.id});
-    }
+    public int hashCode() { return Objects.hash(id); }
 
-
-    public abstract String getRole();
+    public abstract String getUserRole();
 
     public abstract String getPassword();
 

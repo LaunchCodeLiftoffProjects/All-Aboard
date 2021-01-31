@@ -88,7 +88,9 @@ public class RegistrationController {
 
 
 
-        User newUser = new User(username, pw_hash, email, addressLineOne, addressLineTwo, city, state, zipCode, role, userRole);
+        User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword(), registerFormDTO.getEmail(),
+                registerFormDTO.getAddressLineOne(), registerFormDTO.getAddressLineTwo(), registerFormDTO.getCity(),
+                registerFormDTO.getState(), registerFormDTO.getZipCode(), true, "ROLE_USER");
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
