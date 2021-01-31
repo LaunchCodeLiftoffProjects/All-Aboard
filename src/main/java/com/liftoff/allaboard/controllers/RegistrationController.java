@@ -41,13 +41,6 @@ public class RegistrationController {
         session.setAttribute(userSessionKey, user.getId());
     }
 
-    @GetMapping("/index")
-    public String index(Model model) {
-
-        model.addAttribute("title", "All Aboard");
-
-        return "index";
-    }
 
     @GetMapping("/register")
     public String displayRegistrationForm(Model model) {
@@ -98,7 +91,7 @@ public class RegistrationController {
             model.addAttribute("user", result.get());
             return "profile";
         } else {
-            return "index";
+            return "redirect:";
         }
     }
 
