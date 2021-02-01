@@ -61,7 +61,7 @@
     }
 
     .control-submit:hover {
-        background-color: #DFFFAE;
+        background-color: #f0d4fa;
     }
 
     .control-submit:focus {
@@ -71,8 +71,15 @@
     .mapGrid {
         height: 100%;
         display: grid;
-        grid-template-rows: auto 2fr 1fr;
+        grid-template-rows: auto auto 2fr 1fr;
         grid-template-columns: auto 1fr;
+    }
+
+    header {
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 1;
+        grid-column-end: 3;
     }
 
     .controls {
@@ -80,8 +87,8 @@
         justify-content: center;
         align-items: center;
         width: 100%;
-        grid-row-start: 1;
-        grid-row-end: 2;
+        grid-row-start: 2;
+        grid-row-end: 3;
         grid-column-start: 1;
         grid-column-end: 3;
         background-color: #f7faf1;
@@ -91,8 +98,8 @@
     }
 
     .results {
-        grid-row-start: 2;
-        grid-row-end: 4;
+        grid-row-start: 3;
+        grid-row-end: 5;
         grid-column-start: 1;
         grid-column-end: 2;
         width: 350px;
@@ -103,9 +110,35 @@
         border-right: rgb(118, 118, 118) 1px solid;
     }
 
+    .expanded-bio {
+        display: none;
+        grid-row-start: 3;
+        grid-row-end: 5;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        width: 350px;
+        font-size: 25px;
+        text-align: center;
+        overflow-y: auto;
+        background-color: #d4e4ff;
+        border-right: rgb(118, 118, 118) 1px solid;
+        padding: 20px;
+    }
+
+    .expanded-bio-card {
+        margin: 1px;
+        border-style: groove;
+        border-radius: 25px;
+        padding: 20px;
+        text-align: left;
+        background-color: white;
+        box-shadow: 3px 3px 5px 1px #3d5173;
+        cursor: pointer;
+    }
+
     .map {
-        grid-row-start: 2;
-        grid-row-end: 4;
+        grid-row-start: 3;
+        grid-row-end: 5;
         grid-column-start: 2;
         grid-column-end: 3;
         z-index: 0;
@@ -123,6 +156,7 @@
         text-align: left;
         background-color: white;
         box-shadow: 3px 3px 5px 1px #3d5173;
+        cursor: pointer;
     }
 
     .result-info:hover {
@@ -149,8 +183,54 @@
         font-size: 10pt;
     }
 
+    .membership-true {
+        font-size: 10pt;
+    }
+
     .membership-false {
         color: #ed3535;
+        font-size: 10pt;
+    }
+
+    .expanded-bio-name {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .expanded-bio-description {
+        margin-bottom: 20px;
+        font-size: 16pt;
+    }
+
+    .expanded-game-type {
+        margin-bottom: 20px;
+        font-size: 16pt;
+    }
+
+    .expanded-membership-true {
+        font-size: 16pt;
+    }
+
+    .expanded-membership-false {
+            font-size: 16pt;
+    }
+
+    .bio-back-button {
+        border-radius: 20px;
+        font-size: 14pt;
+        margin-bottom: 20px;
+        width: 100px;
+        border-style: solid;
+        background-color: #FBF0FF;
+        border-width: 1px;
+    }
+
+    .bio-back-button:hover {
+        background-color: #f0d4fa;
+    }
+
+    .bio-back-button:focus {
+        outline: none;
     }
 
 

@@ -7,7 +7,7 @@
     ],
     "gameType": "Chess",
     "openMembership": true,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 0
   },
   {
@@ -18,7 +18,7 @@
     ],
     "gameType": "Stratego",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 1
   },
   {
@@ -27,9 +27,9 @@
       -90.35185881737743,
       38.56530983483351
     ],
-    "gameType": "Twilight Struggle",
+    "gameType": "Vampire: The Masquerade",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 2
   },
   {
@@ -40,7 +40,7 @@
     ],
     "gameType": "D&D",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 3
   },
   {
@@ -51,7 +51,7 @@
     ],
     "gameType": "Go",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 4
   },
   {
@@ -60,9 +60,9 @@
       -90.26124513272141,
       38.6485044833591
     ],
-    "gameType": "Evolution: Climate",
+    "gameType": "Settlers Of Catan",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 5
   },
   {
@@ -73,7 +73,7 @@
     ],
     "gameType": "Warhammer 40k",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 6
   },
   {
@@ -82,9 +82,9 @@
       -90.397875,
       38.675861
     ],
-    "gameType": "Warhammer 40k",
+    "gameType": "D&D",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 7
   },
   {
@@ -93,9 +93,9 @@
       -90.376765,
       38.620197
     ],
-    "gameType": "Warhammer 40k",
+    "gameType": "Vampire: The Masquerade",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 8
   },
   {
@@ -104,9 +104,9 @@
       -90.284401,
       38.666212
     ],
-    "gameType": "Warhammer 40k",
+    "gameType": "Settlers Of Catan",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 9
   },
   {
@@ -115,9 +115,9 @@
       -90.233814,
       38.693549
     ],
-    "gameType": "Warhammer 40k",
+    "gameType": "Chess",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 10
   },
   {
@@ -128,7 +128,7 @@
     ],
     "gameType": "Warhammer 40k",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 11
   },
   {
@@ -137,9 +137,9 @@
       -90.469373,
       38.626634
     ],
-    "gameType": "Warhammer 40k",
+    "gameType": "Go",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 12
   },
   {
@@ -148,9 +148,9 @@
       -90.377656,
       38.685510
     ],
-    "gameType": "Warhammer 40k",
+    "gameType": "Stratego",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 13
   },
   {
@@ -159,9 +159,9 @@
       -90.201154,
       38.656132
     ],
-    "gameType": "Warhammer 40k",
+    "gameType": "D&D",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 14
   },
   {
@@ -170,9 +170,9 @@
       -90.314749,
       38.617192
     ],
-    "gameType": "Warhammer 40k",
+    "gameType": "Vampire: The Masquerade",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 15
   },
   {
@@ -181,9 +181,9 @@
       -90.286445,
       38.585103
     ],
-    "gameType": "Warhammer 40k",
+    "gameType": "Settlers Of Catan",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 16
   },
   {
@@ -192,9 +192,9 @@
       -90.354484,
       38.594495
     ],
-    "gameType": "Warhammer 40k",
+    "gameType": "Chess",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 17
   },
   {
@@ -205,7 +205,7 @@
     ],
     "gameType": "Warhammer 40k",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 18
   },
   {
@@ -214,9 +214,9 @@
       -90.233637,
       38.660823
     ],
-    "gameType": "Warhammer 40k",
+    "gameType": "Go",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 19
   },
   {
@@ -225,9 +225,9 @@
       -90.284377,
       38.536672
     ],
-    "gameType": "Warhammer 40k",
+    "gameType": "Stratego",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 20
   },
   {
@@ -236,9 +236,9 @@
       -90.317635,
       38.543762
     ],
-    "gameType": "Warhammer 40k",
+    "gameType": "D&D",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 21
   },
   {
@@ -247,9 +247,9 @@
       -90.565461,
       38.659885
     ],
-    "gameType": "Warhammer 40k",
+    "gameType": "Vampire: The Masquerade",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 22
   },
   {
@@ -258,9 +258,9 @@
       -90.384865,
       38.416154
     ],
-    "gameType": "Warhammer 40k",
+    "gameType": "Settlers Of Catan",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 23
   },
   {
@@ -269,9 +269,9 @@
       -90.317452,
       38.738660
     ],
-    "gameType": "Warhammer 40k",
+    "gameType": "Chess",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 24
   },
   {
@@ -282,7 +282,7 @@
     ],
     "gameType": "Warhammer 40k",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 25
   },
   {
@@ -291,9 +291,9 @@
       -87.599991,
       41.769494
     ],
-    "gameType": "Warhammer 40k",
+    "gameType": "Go",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 26
   },
   {
@@ -302,9 +302,9 @@
       -73.954593,
       40.796508
     ],
-    "gameType": "Warhammer 40k",
+    "gameType": "Stratego",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 27
   },
   {
@@ -313,9 +313,9 @@
       -90.005200,
       38.744659
     ],
-    "gameType": "Warhammer 40k",
+    "gameType": "D&D",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 28
   },
   {
@@ -324,9 +324,9 @@
       -90.622644,
       38.500678
     ],
-    "gameType": "Warhammer 40k",
+    "gameType": "Vampire: The Masquerade",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 29
   },
   {
@@ -335,9 +335,9 @@
       -90.159851,
       38.885902
     ],
-    "gameType": "Warhammer 40k",
+    "gameType": "Settlers Of Catan",
     "openMembership": false,
-    "gameGroupDescription": "We play chess :)",
+    "gameGroupDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "id": 30
   }
 ]

@@ -192,6 +192,17 @@ function generateMap() {
       map.hasFeatureAtPixel(pixel);
       map.getTargetElement().style.cursor = hoveredFeature ? 'pointer' : '';
     });
+
+    map.on('click', function(e) {
+      let clickedFeature = map.forEachFeatureAtPixel(e.pixel, function (feature, layer) {
+        if (layer === gamePinLayer) {
+            return feature;
+        }
+      });
+      if (clickedFeature) {
+        pinOnClick(clickedFeature);
+      }
+    })
 }
 
 function showPinPopup(feature) {
@@ -217,7 +228,7 @@ function hidePinPopup(feature) {
     $(popupElm).popover('dispose');
 }
 
-function resultOnClick() {
+function resultOnClick(e) {
     const resultId = this.id;
     gamePinSource.forEachFeature((feature) => {
         if(resultId === `result-${feature.get('id')}`) {
@@ -225,8 +236,28 @@ function resultOnClick() {
             view.setZoom(12.5);
         };
     })
-
+    expandBio(resultId);
 }
+
+function pinOnClick(clickedFeature) {
+    expandBio(clickedFeature.get('id'));
+}
+
+function expandBio(gameGroupId) {
+    gameGroupId = Number(gameGroupId.toString().replace('result-', ''));
+    $('#results').hide();
+    $('#expanded-bio').show();
+    let bioData = filteredData.find((elm) => { return gameGroupId === elm.id });
+    $('#expanded-bio-name').html(bioData.gameGroupName);
+    $('#expanded-bio-description').html(bioData.gameGroupDescription);
+    $('#expanded-game-type').html(bioData.gameType);
+    $('#expanded-open-membership').html(
+        bioData.openMembership ?
+        '<span class="expanded-membership-true">Taking new members</span>' :
+        '<span class="expanded-membership-false">Not taking new members</span>'
+    )
+}
+
 
 function resultOnMouseOver() {
     const resultId = this.id;
@@ -246,12 +277,12 @@ function resultOnMouseOut() {
 }
 
 function searchAddress() {
-    let input = encodeURIComponent($('#search').val());
-    const geocodeURL = `https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=${input}&benchmark=4&vintage=Current_Current&format=json&callback=?`;
+    let urlEncodedLocation = encodeURIComponent($('#search').val());
+    const geocodeURL = `https://nominatim.openstreetmap.org/search.php?q=${urlEncodedLocation}&format=json`;
 
     $.getJSON(geocodeURL, function(response) {
-        const coordinates = response.result.addressMatches[0].coordinates;
-        view.setCenter(ol.proj.fromLonLat([coordinates.x, coordinates.y]));
+        const coordinates = response[0];
+        view.setCenter(ol.proj.fromLonLat([coordinates.lon, coordinates.lat]));
         centerPinFeature.set(
             'geometry',
             new ol.geom.Point(view.getCenter())
@@ -265,6 +296,11 @@ $('#controls').submit(function(event) {
     setResultParameters();
 });
 
+$('#bio-back-button').click(function(event) {
+    $('#results').show();
+    $('#expanded-bio').hide();
+});
+
 function setResultParameters() {
     gameGroupFeatures = [];
     filteredData = [...jsonData];
@@ -276,8 +312,14 @@ function setResultParameters() {
 
     const distanceSelect = Number($('#distance-select').val());
     const viewCenter = ol.proj.toLonLat(view.getCenter());
+    const gameSelect = $('#game-select').val();
+
     if (distanceSelect !== 0) {
         filterGroupsByDistance(viewCenter, distanceSelect);
+    }
+
+    if (gameSelect && gameSelect !== '') {
+        filterGroupsByGame(gameSelect)
     }
 
     filteredData.forEach((dataItem) => {
@@ -322,6 +364,14 @@ function filterGroupsByDistance(center, distance) {
         ]).getLength() * meterToMiles;
 
         if(featureDistance > distance) {
+            filteredData.splice(i, 1);
+        }
+    }
+}
+
+function filterGroupsByGame (gameType) {
+    for(let i = filteredData.length - 1; i >= 0; i--) {
+        if(filteredData[i].gameType !== gameType) {
             filteredData.splice(i, 1);
         }
     }
