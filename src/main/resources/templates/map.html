@@ -9,9 +9,8 @@
     <title>Map</title>
 </head>
 <body>
-    <nav th:replace="fragments :: navbar"></nav>
-
     <div class="mapGrid">
+        <nav id="top-nav" th:replace="fragments :: navbar"></nav>
         <form id="controls" class="controls">
             <div class="control">
                 <label class="control-label" for="search"></label>
@@ -22,18 +21,23 @@
             <div class="control">
                 <label class="control-label" for="game-select"></label>
                 <select name="games-select" id="game-select">
-                    <option value = "" disabled selected hidden>select game</option>
-                    <option value="dungeons-and-dragons">D&D</option>
-                    <option value="vampire-the-masquerade">Vampire: The Masquerade</option>
-                    <option value="settlers-of-catan">Settlers Of Catan</option>
-                    <option value="monopoly">Monopoly</option>
+                    <option value="" disabled selected hidden>select game</option>
+                    <option value="">All</option>
+                    <option value="D&D">D&D</option>
+                    <option value="Vampire: The Masquerade">Vampire: The Masquerade</option>
+                    <option value="Settlers Of Catan">Settlers Of Catan</option>
+                    <option value="Chess">Chess</option>
+                    <option value="Warhammer 40k">Warhammer 40K</option>
+                    <option value="Go">Go</option>
+                    <option value="Stratego">Stratego</option>
                 </select>
             </div>
 
             <div class="control">
                 <label class="control-label" for="distance-select"></label>
                 <select name="distance-select" id="distance-select">
-                    <option value = "" disabled selected hidden>distance</option>
+                    <option value="" disabled selected hidden>distance</option>
+                    <option value="">All</option>
                     <option value="5">5 miles</option>
                     <option value="10">10 miles</option>
                     <option value="15">15 miles</option>
@@ -48,6 +52,16 @@
         <div id="results" class="results">
         </div>
 
+        <div id="expanded-bio" class="expanded-bio">
+            <div class="expanded-bio-card">
+                <button type="button" id="bio-back-button" class="bio-back-button">Go back</button>
+                <h3 id="expanded-bio-name" class="expanded-bio-name"></h3>
+                <p id="expanded-bio-description" class="expanded-bio-description"></p>
+                <div class="expanded-game-type">Game: <span id="expanded-game-type" class="expanded-game-type"></span></div>
+                <div id="expanded-open-membership" class="expanded-open-membership"></div>
+            </div>
+        </div>
+
         <div id="map" class="map">
             <div id="popup"></div>
         </div>
@@ -56,6 +70,7 @@
     <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script>
     <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"></script>
     <script type="text/javascript" th:src="@{/map/map.js}"></script>
+    <script type="text/javascript" src="./parse-address.min.js"></script>
 </body>
 
 </html>

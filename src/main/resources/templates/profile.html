@@ -9,25 +9,25 @@
     <img class="profile-pic"  th:src="@{/images/default_profile_pic.jpg}">
     <div class="card-img-overlay">
         <h1 class="card-title">Profile</h1>
-        <button class="btn-link btn-sm" href="/logout">Log Out</button>
+        <a href="/logout" class="btn btn-outline-primary btn-sm float-right">Logout</a>
     </div>
 </div>
 
 <div class="container" style="padding: 30px">
-    <div class="card-columns">
-        <div class="w-75">
+    <div class="card-deck">
+        <div class="card">
             <div class="card text-center">
                 <h2 class="card-header">Home</h2>
                 <div class="card-body">
                     <p class="card-text">Visit the home page</p>
                 </div>
                 <div class="card-footer">
-                    <a href="/index" class="btn btn-primary">Take Me Home</a>
+                    <a href="/" class="btn btn-primary">Take Me Home</a>
                 </div>
             </div>
         </div>
 
-        <div class="w-75">
+        <div class="card">
             <div class="card text-center">
                 <h2 class="card-header">Map</h2>
                 <div class="card-body">
@@ -39,19 +39,34 @@
             </div>
         </div>
 
-    <div class="w-75">
+    <div class="card">
         <div class="card text-center">
             <h2 class="card-header">My Groups</h2>
             <div class="card-body">
                 <p class="card-text">Here are the groups you are a member of:</p>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item" th:each="group : ${groups}">
-                            <a th:text="${group.name}"></a>
+                        <li class="list-group-item" th:each="group : ${gameGroup}">
+                            <a th:text="${group.gameGroupName}"></a>
                         </li>
                     </ul>
             </div>
+                <div class="card-footer">
+                    <a href="/group" class="btn btn-primary">View more groups!</a>
+                </div>
         </div>
     </div>
+
+        <div class="card">
+            <div class="card text-center">
+                <h2 class="card-header">Messages</h2>
+                <div class="card-body">
+                    <p class="card-text">Send a message to another user!</p>
+                </div>
+                <div class="card-footer">
+                    <a href="/messaging/games" class="btn btn-primary">Messaging!</a>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>
