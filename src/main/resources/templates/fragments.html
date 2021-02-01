@@ -18,12 +18,14 @@
 
 <body>
 <header th:fragment="navbar">
-    <nav class="nav nav-tabs nav-justified">
+    <nav class="nav">
         <h1>All Aboard</h1>
-        <ul class="nav">
+        <ul class="nav nav-justified">
             <li class="nav-item"><a class="nav-link" href="/profile/${user.id}">My Page</a></li>
             <li class="nav-item"><a class="nav-link" href="/map">Map</a></li>
-            <li class="nav-item"><a class="nav-link" href="/group">My Groups</a></li>
+            <li class="nav-item"><a class="nav-link" href="/group">Groups</a></li>
+            <li class="nav-item"><a class="nav-link" href="/messaging/games">Messaging</a></li>
+            <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
         </ul>
     </nav>
 </header>

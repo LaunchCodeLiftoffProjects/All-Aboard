@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
+<nav th:replace="fragments :: navbar"></nav>
 
 <body class="container body-content">
-<nav th:replace="fragments :: navbar"></nav>
 
 <form method="post" action="/group/create">
 <input type="submit" class="btn btn-primary" value="Create Group" />
