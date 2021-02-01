@@ -1,7 +1,7 @@
-  .header {
+  header {
     padding: 15px;
     background-color: #FAF0E6;
-    border: 2px solid #73AD21;
+    border: 2px solid #696969;
     border-radius: 25px;
   }
 
@@ -22,14 +22,19 @@
     height: 100px;
     float: right;
     border-radius: 50%;
-    border: 10px
+    border: 25px
     border-color: #2F4F4F
+    padding: 10px;
  }
 
  .card-title {
     color: #2F4F4F;
     font-size: 100px;
     text-align: center;
+ }
+
+ .card-text {
+    font-size: 19px;
  }
 
  .card-img-overlay {
