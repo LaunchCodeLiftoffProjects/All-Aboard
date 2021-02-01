@@ -1,0 +1,32 @@
+    .jumbotron {
+        background: url(/images/game-room.jpg);
+        background-size: 100% 100%;
+        height: 1000px;
+        color: whitesmoke;
+    }
+
+
+ .profile-head {
+    height: 200px;
+    background-color: #DCDCDC;
+    padding: 50px;
+ }
+
+ .profile-pic {
+    height:80px;
+    float: right;
+    border-radius: 50%;
+    border: 10px
+    border-color: #2F4F4F
+ }
+
+ .card-title {
+    color: #2F4F4F;
+    font-size: 100px;
+    text-align: center;
+ }
+
+ .card-img-overlay {
+    clear: right;
+ }
+

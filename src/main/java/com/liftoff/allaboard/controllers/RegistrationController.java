@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -43,6 +40,7 @@ public class RegistrationController {
     private static void setUserInSession(HttpSession session, User user) {
         session.setAttribute(userSessionKey, user.getId());
     }
+
 
     @GetMapping("/register")
     public String displayRegistrationForm(Model model) {
@@ -84,7 +82,7 @@ public class RegistrationController {
         return "redirect:";
     }
 
-    @GetMapping("/profile/{Id}")
+    @GetMapping("/profile/{userId}")
     public String displayProfilePage(Model model, @PathVariable int userId) {
 
         Optional<User> result = userRepository.findById(userId);
@@ -93,8 +91,7 @@ public class RegistrationController {
             model.addAttribute("user", result.get());
             return "profile";
         } else {
-            return "map";
-
+            return "redirect:";
         }
     }
 

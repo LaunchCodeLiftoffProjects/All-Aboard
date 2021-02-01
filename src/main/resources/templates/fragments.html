@@ -5,7 +5,7 @@
     <title>All Aboard</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" th:href="@{/css/allaboard..css}"/>
+    <link rel="stylesheet" th:href="@{/css/allaboard.css}"/>
 
     <script
             src="https://code.jquery.com/jquery-3.5.1.min.js"
@@ -17,14 +17,16 @@
 </head>
 
 <body>
-    <nav class="side-nav" th:fragment="sidebar">
+<header th:fragment="navbar">
+    <nav class="nav nav-tabs nav-justified">
         <h1>All Aboard</h1>
-        <ul class="nav" style="float:right;">
-            <li class="side-nav"><a class="nav-link" href="/profile">My Page</a></li>
-            <li class="side-nav"><a class="nav-link" href="/map">Map</a></li>
-            <li class="side-nav"><a class="nav-link" href="/groups">My Groups</a></li>
+        <ul class="nav">
+            <li class="nav-item"><a class="nav-link" href="/profile/${user.id}">My Page</a></li>
+            <li class="nav-item"><a class="nav-link" href="/map">Map</a></li>
+            <li class="nav-item"><a class="nav-link" href="/group">My Groups</a></li>
         </ul>
     </nav>
+</header>
 </body>
 
 </html>
