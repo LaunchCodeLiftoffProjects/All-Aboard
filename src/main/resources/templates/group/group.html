@@ -7,34 +7,34 @@
 
 <form method="post" action="/group/create">
 <input type="submit" class="btn btn-primary" value="Create Group" />
-
-<table class="table table-striped">
-    <thead>
+    <br></br>
+<table class="table table-hover">
+    <thead class="thead-dark">
     <tr>
-        <th>Group Name</th>
-        <th>Group Description</th>
-        <th>Group Rules</th>
-        <th>Group Address</th>
-        <th>Group Zip Code</th>
-        <th>Edit Group</th>
-        <th>Delete Group</th>
+        <th style="text-align:center">Group Name</th>
+        <th style="text-align:center">Group Description</th>
+        <th style="text-align:center">Group Rules</th>
+        <th style="text-align:center">Group Address</th>
+        <th style="text-align:center">Group Zip Code</th>
+        <th style="text-align:left">Edit Group</th>
+<!--        <th>Delete Group</th>-->
     </tr>
     </thead>
 
     <tr  th:each="gameGroup : ${groups}">
-        <td th:text="${gameGroup.gameGroupName}"></td>
-        <td th:text="${gameGroup.gameGroupDescription}"></td>
-        <td th:text="${gameGroup.gameGroupRules}"></td>
-        <td th:text="${gameGroup.gameGroupAddress}"></td>
-        <td th:text="${gameGroup.gameGroupZipCode}"></td>
+        <td style="text-align:center" th:text="${gameGroup.gameGroupName}"></td>
+        <td style="text-align:center" th:text="${gameGroup.gameGroupDescription}"></td>
+        <td style="text-align:center" th:text="${gameGroup.gameGroupRules}"></td>
+        <td style="text-align:center" th:text="${gameGroup.gameGroupAddress}"></td>
+        <td style="text-align:center" th:text="${gameGroup.gameGroupZipCode}"></td>
     <td>
         <a th:href="@{'/group/edit/' + ${gameGroup.id}}">Edit Group</a>
 
     </td>
 
-        <td>
-            <a th:href="@{'/group/delete'}">Delete Group</a>
-        </td>
+<!--        <td>-->
+<!--            <a th:href="@{'/group/delete'}">Delete Group</a>-->
+<!--        </td>-->
     </tr>
 
 </table>
