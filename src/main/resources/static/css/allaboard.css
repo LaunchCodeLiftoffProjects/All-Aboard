@@ -1,10 +1,16 @@
-    .jumbotron {
-        background: url(/images/game-room.jpg);
-        background-size: 100% 100%;
-        height: 1000px;
-        color: whitesmoke;
-    }
+  .header {
+    padding: 15px;
+    background-color: #FAF0E6;
+    border: 2px solid #73AD21;
+    border-radius: 25px;
+  }
 
+  .jumbotron {
+    background: url(/images/game-room.jpg);
+    background-size: 100% 100%;
+    height: 1000px;
+    color: whitesmoke;
+  }
 
  .profile-head {
     height: 200px;
@@ -13,7 +19,7 @@
  }
 
  .profile-pic {
-    height:80px;
+    height: 100px;
     float: right;
     border-radius: 50%;
     border: 10px
@@ -30,3 +36,24 @@
     clear: right;
  }
 
+   .navbar {
+    display:flex;
+
+   }
+
+  .navbar a{
+    padding: 12px;
+    text-decoration:none;
+    font-size:25px;
+    text-align: center;
+    color:#818181;
+    display:block;
+  }
+
+  .navbar a:hover{
+     color:#f1f1f1;
+  }
+
+  .navbar a.active {
+    background-color: #4CAF50;
+  }
