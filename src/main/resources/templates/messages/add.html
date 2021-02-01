@@ -1,6 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <!--<head th:replace="fragments :: head"></head>-->
+<head>
+    <style>
+
+h1{
+  font-size: 50px;
+  color: #B4886B;
+}
+p {
+  color: #B4886B;
+}
+a  {
+  color: #B4886B;
+}
+  table, th, td {
+  width: 38%;
+  border: 1px solid black;
+  margin: 15px 0px;
+  align
+}
+
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  }
+label { color: #B4886B;
+        text-align: center;
+        border: 3px black;
+        font-weight: bold;
+        display: block;
+        width: 600px;
+        float: left; }
+        label:after { content: ": " }
+</style>
+</head>
+
 <body class="container  body-content">
 
 
@@ -25,7 +62,7 @@
     <input type="hidden" th:value="${message.toGameGroupId}" name="toGameGroupId" />
     <input type="hidden" th:value="${gameName}" name="gameName" />
     <div class="form-group">
-        <label th:for="messageText">Text</label>
+        <label th:for="messageText">Write Your Message Here</label>
         <input class="form-control" th:field="${message.messageText}" />
 <!--        <span th:errors="${employer.name}" class="error"></span>-->
     </div>

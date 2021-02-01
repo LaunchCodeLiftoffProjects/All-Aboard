@@ -1,20 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
 
+<head>
+    <style>
+
+h1 {
+color: #B4886B;
+}
+a {
+  font-size: 50px;
+  color: #B4886B;
+}
+
+table {
+
+  border-collapse: collapse;
+}
+ table, th, td {
+  width: 50%;
+  border: 1px solid black;
+  margin: 15px 5px;
+  align
+}
+</style>
 </head>
+
+
 <body>
 
 
 
 <div class="container body-content">
 
-    <h1>games</h1>
+    <h1>Games</h1>
 
     <table >
         <tr th:each="game : ${games}">
             <td>
                 <p>
-                    Game Id:
+                    Game Title:
                     <a th:href="@{'addFromGame?gameId=' + ${game.id} + '&gameName=' + ${game.name}}" th:text="${game.name}"></a>
                 </p>
             </td>
