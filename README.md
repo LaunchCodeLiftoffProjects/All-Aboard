@@ -32,7 +32,7 @@ The idea stemmed from a love of playing games. At times, there is no one to play
 ## How to Run This Repo
 1. Clone or download repo to your local machine.
 2. Set up a MySQL schema with the name of your choice. Set up a user with access to the schema.
-3. Open the project in your IDE of choice and navigate to Study-App\src\main\resources\application.properties
+3. Open the project in your IDE of choice and navigate to All-Aboard\src\main\resources\application.properties
 4. Update the top of the file with your chosen username, password, and schema name & location :
         
         spring.datasource.url=jdbc:mysql://localhost:3306/schema_name
